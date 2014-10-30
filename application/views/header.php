@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="<?=base_url()?>css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?=base_url()?>css/main.css">
+        <script src="<?=base_url()?>js/vendor/modernizr-2.6.2.min.js"></script>
+        <base href="<?=base_url()?>"></base>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browsehappy">U gebruikt een <strong>verouderde</strong> versie van uw browser. <a href="http://browsehappy.com/">Update uw browser</a> om deze website goed te bekijken.</p>
+        <![endif]-->
