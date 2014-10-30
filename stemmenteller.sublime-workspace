@@ -1,0 +1,1131 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Q",
+				"QUERY_STRING"
+			],
+			[
+				"_",
+				"_REQUEST"
+			],
+			[
+				"DOMI",
+				"DOMUploadList"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"_chec",
+				"_checkUploadResponse(event, data)	uploadqueue.js"
+			],
+			[
+				"upload",
+				"uploadqueue(element)	uploadqueue.js"
+			],
+			[
+				"Scotty",
+				"ScottyUploadQueue"
+			],
+			[
+				"respo",
+				"response()	jquery.fileupload.js"
+			],
+			[
+				"des",
+				"destroy()	clip.js"
+			],
+			[
+				"EM_Booking",
+				"EM_Booking"
+			],
+			[
+				"ticket",
+				"ticket_id"
+			],
+			[
+				"booki",
+				"booking_id"
+			],
+			[
+				"EM_Booki",
+				"EM_Booking"
+			],
+			[
+				"backgr",
+				"background-size"
+			],
+			[
+				"mysql_",
+				"mysql_query"
+			],
+			[
+				"marg",
+				"margin-top"
+			],
+			[
+				"mysql",
+				"mysql_fetch_object"
+			],
+			[
+				"loca",
+				"locationid"
+			],
+			[
+				"playlist",
+				"playlistid"
+			],
+			[
+				"location",
+				"locationplaylistitem"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"locat",
+				"location-playlist"
+			],
+			[
+				"clip",
+				"clip-column"
+			],
+			[
+				"resul",
+				"results"
+			],
+			[
+				"mysq",
+				"mysql_real_escape_string"
+			],
+			[
+				"no",
+				"no-repeat  (value)"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"JSON",
+				"parseJSON  (function)"
+			],
+			[
+				"sortable",
+				"sortableOptionsLocation"
+			],
+			[
+				"draggable",
+				"draggableOptionsMediaItems"
+			],
+			[
+				"newpl",
+				"newplaylist"
+			],
+			[
+				"pla",
+				"playlist-column"
+			],
+			[
+				"uplo",
+				"upload-column"
+			],
+			[
+				"get",
+				"getMediaList()	main.js"
+			],
+			[
+				"str",
+				"stripslashes"
+			],
+			[
+				"EM_Book",
+				"EM_Booking"
+			],
+			[
+				"field",
+				"field_data"
+			],
+			[
+				"EM_Bo",
+				"EM_Booking"
+			],
+			[
+				"defa",
+				"defauls"
+			],
+			[
+				"modi",
+				"modify_bookings_get_default_search"
+			],
+			[
+				"nick",
+				"nickname"
+			],
+			[
+				"CustomB",
+				"CustomBookingsForm"
+			],
+			[
+				"cb_cust",
+				"cb_custom_field_values"
+			],
+			[
+				"bookings_table",
+				"bookings_table_row_"
+			],
+			[
+				"cols",
+				"colslugs"
+			],
+			[
+				"col",
+				"cols_template"
+			],
+			[
+				"prin",
+				"print_r  (function)"
+			],
+			[
+				"field_",
+				"field_label"
+			],
+			[
+				"custom",
+				"custom_fields"
+			],
+			[
+				"array",
+				"array_key_exists"
+			],
+			[
+				"arra",
+				"array_key_exists"
+			],
+			[
+				"Custom",
+				"CustomBookings"
+			],
+			[
+				"bookin",
+				"bookings_table"
+			],
+			[
+				"__",
+				"__construct"
+			],
+			[
+				"booking",
+				"bookings_table"
+			],
+			[
+				"EM",
+				"PHP_Token_EXCLAMATION_MARK  (class)"
+			],
+			[
+				"plugin",
+				"plugin_dir_path"
+			],
+			[
+				"ad",
+				"add_total_price_script"
+			],
+			[
+				"check",
+				"checkbox"
+			],
+			[
+				"field_data",
+				"field_data"
+			],
+			[
+				"glob",
+				"global"
+			],
+			[
+				"last",
+				"last_query"
+			],
+			[
+				"Cstom",
+				"CustomBookingsForm"
+			],
+			[
+				"getCust",
+				"getCustomFormFields"
+			],
+			[
+				"va",
+				"validation"
+			],
+			[
+				"cu",
+				"custom_field_slug"
+			],
+			[
+				"event",
+				"event_id"
+			],
+			[
+				"error",
+				"error_log"
+			],
+			[
+				"er",
+				"error_log"
+			],
+			[
+				"cb_cus",
+				"cb_custom_field_values"
+			],
+			[
+				"cb_",
+				"cb_custom_field_values"
+			],
+			[
+				"user",
+				"user_ID"
+			],
+			[
+				"cb_custom",
+				"cb_custom_field_values"
+			],
+			[
+				"cb_custom_fields",
+				"cb_custom_fields_last_fetched"
+			],
+			[
+				"custom_form",
+				"custom_form_fields"
+			],
+			[
+				"custom_field",
+				"custom_fields_last_fetched"
+			],
+			[
+				"custom_fiel",
+				"custom_fields_last_updated"
+			],
+			[
+				"custom_f",
+				"custom_fields"
+			],
+			[
+				"cust",
+				"custom_fields"
+			],
+			[
+				"custom_",
+				"custom_fields"
+			],
+			[
+				"text",
+				"textarea"
+			],
+			[
+				"font-",
+				"font-style:   (property)"
+			],
+			[
+				"ta",
+				"$tablenames  (variable)"
+			],
+			[
+				"opt",
+				"option_label"
+			],
+			[
+				"option",
+				"option_value"
+			],
+			[
+				"fiel",
+				"field_slug"
+			],
+			[
+				"Cust",
+				"CustomBookings"
+			],
+			[
+				"field_chec",
+				"field_checkbox_label_row"
+			],
+			[
+				"field_op",
+				"field_options_row"
+			],
+			[
+				"incl",
+				"include"
+			],
+			[
+				"update",
+				"update_field"
+			],
+			[
+				"CustomBoo",
+				"CustomBookings"
+			],
+			[
+				"CustomBook",
+				"CustomBookingsFormEditor"
+			],
+			[
+				"PLUG",
+				"CBFEM_PLUGIN_PATH"
+			],
+			[
+				"fields",
+				"fieldstable"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"EM_",
+				"EM_Booking"
+			],
+			[
+				"EM_B",
+				"EM_Bookings_Table"
+			],
+			[
+				"op",
+				"option	Tag"
+			],
+			[
+				"em",
+				"EM_Event"
+			],
+			[
+				"WP_Form_View",
+				"WP_Form_View_Input  (class)"
+			],
+			[
+				"add",
+				"add_new_event_form_builder"
+			],
+			[
+				"render",
+				"render_settings_page  (function)"
+			],
+			[
+				"action",
+				"action"
+			],
+			[
+				"column",
+				"column_name"
+			],
+			[
+				"table",
+				"tablenames"
+			],
+			[
+				"mana",
+				"add_events_manager_menu"
+			],
+			[
+				"tab",
+				"table"
+			],
+			[
+				"HX",
+				"HXEVENTS_DB_VERSION"
+			],
+			[
+				"glo",
+				"global"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"requi",
+				"require_once  (keyword)"
+			],
+			[
+				"wp_",
+				"wp_basename  (function)"
+			],
+			[
+				"inc",
+				"include_once  (keyword)"
+			],
+			[
+				"true",
+				"true"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "<!DOCTYPE html>\n<!--[if lt IE 7]>      <html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"> <![endif]-->\n<!--[if IE 7]>         <html class=\"no-js lt-ie9 lt-ie8\"> <![endif]-->\n<!--[if IE 8]>         <html class=\"no-js lt-ie9\"> <![endif]-->\n<!--[if gt IE 8]><!--> <html class=\"no-js\"> <!--<![endif]-->\n    <head>\n        <meta charset=\"utf-8\">\n        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n        <title></title>\n        <meta name=\"description\" content=\"\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n\n        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->\n\n        <link rel=\"stylesheet\" href=\"css/normalize.css\">\n        <link rel=\"stylesheet\" href=\"css/main.css\">\n        <script src=\"js/vendor/modernizr-2.6.2.min.js\"></script>\n    </head>\n    <body>\n        <!--[if lt IE 8]>\n            <p class=\"browsehappy\">You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience.</p>\n        <![endif]-->\n\n        <!-- Add your site or application content here -->\n        <p>Hello world! This is HTML5 Boilerplate.</p>\n\n        <script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>\n        <script>window.jQuery || document.write('<script src=\"js/vendor/jquery-1.10.2.min.js\"><\\/script>')</script>\n        <script src=\"js/plugins.js\"></script>\n        <script src=\"js/main.js\"></script>\n\n        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->\n        <script>\n            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=\n            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;\n            e=o.createElement(i);r=o.getElementsByTagName(i)[0];\n            e.src='//www.google-analytics.com/analytics.js';\n            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));\n            ga('create','UA-XXXXX-X');ga('send','pageview');\n        </script>\n    </body>\n</html>\n",
+			"file": "index.html",
+			"file_size": 2014,
+			"file_write_time": 1378841587000000,
+			"settings":
+			{
+				"buffer_size": 2014,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/views/header.php",
+			"settings":
+			{
+				"buffer_size": 809,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 87.0,
+		"selected_items":
+		[
+			[
+				"close",
+				"File: Close All"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"About"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package",
+				"Package Control: Install Package"
+			],
+			[
+				"Pack",
+				"Package Control: Install Package"
+			],
+			[
+				"file",
+				"File: New View into File"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/RidderGraniet/Library/Caches/Cleanup At Startup/Transmit/B77D5FEE-ED94-4616-81EC-DE18739EA1CE/subscribe2custom.php",
+		"/Users/RidderGraniet/Library/Containers/com.apple.mail/Data/Library/Mail Downloads/Country.xml",
+		"/Users/RidderGraniet/Sites/nesk_video/realscotty/views/clip.py",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/classes/custom-bookings-bookings-table.class.php",
+		"/Users/RidderGraniet/Sites/nesk_video/realscotty/views/static/js/file.js",
+		"/Users/RidderGraniet/Sites/labs/jsoop/index.html",
+		"/Users/RidderGraniet/Sites/nesk_video/realscotty/views/static/index.html",
+		"/Users/RidderGraniet/Sites/labs/jsoop/jsoop2.js",
+		"/Users/RidderGraniet/Sites/nesk_video/realscotty/views/static/js/realscottyobject.js",
+		"/Users/RidderGraniet/Sites/labs/jsoop/jsoop.js",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/custombooking.php",
+		"/Users/RidderGraniet/Sites/nesk_video/index.html",
+		"/Users/RidderGraniet/Sites/nesk_video/js/clip.js",
+		"/Users/RidderGraniet/Sites/nesk_video/main.js",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/events-manager.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/em-functions.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/em-bookings.php",
+		"/Users/RidderGraniet/Sites/nesk_video/uploadhandler/UploadHandler.php",
+		"/Users/RidderGraniet/Sites/nesk_video/mediahandler.php",
+		"/Users/RidderGraniet/Sites/nesk_video/playlisthandler.php",
+		"/Users/RidderGraniet/Sites/nesk_video/locationhandler.php",
+		"/Users/RidderGraniet/Sites/nesk_video/js/main.js",
+		"/Users/RidderGraniet/Sites/nesk_video/css/main.css",
+		"/Users/RidderGraniet/Sites/nesk_video/mysql_connection.php",
+		"/Users/RidderGraniet/Sites/nesk_video/udpdostatement.php",
+		"/Users/RidderGraniet/Sites/nesk_video/mysql_connection",
+		"/Users/RidderGraniet/Sites/nesk_video/js/vendor/jquery-ui-1.10.3.custom.min.js",
+		"/Users/RidderGraniet/Sites/nesk_video/crossdomain.xml",
+		"/Users/RidderGraniet/Sites/nesk/js/plugins.js",
+		"/Users/RidderGraniet/Sites/nesk/js/main.js",
+		"/Users/RidderGraniet/Sites/nesk/css/main.css",
+		"/Users/RidderGraniet/Sites/nesk/coen.sublime-project",
+		"/Users/RidderGraniet/Sites/nesk/robots.txt",
+		"/Users/RidderGraniet/.ssh/key.pub",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/views/new_edit_field.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/views/bookings-table.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/custombookingsfieldstable.class.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/custom-bookings-bookings-table.class.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/totalprice.js",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/templates/placeholders/bookingform.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/admin/em-admin.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/classes/em-booking.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/templates/forms/bookingform/booking-fields.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/classes/em-ticket-booking.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/classes/em-bookings-table.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/views/conditional-input-fields.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/admin/em-bookings.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/views/field_editor.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/custombookingfieldstable.class.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/templates/forms/ticket-form.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/wp-forms-master/classes/views/WP_Form_View.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/wp-forms-master/classes/WP_Form_Component.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/wp-forms-master/classes/views/decorators/WP_Form_Decorator.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/wp-forms-master/classes/views/decorators/WP_Form_Decorator_Description.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/wp-forms-master/classes/WP_Form.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/hxevents/classes/sanity.class.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/wp-forms-master/classes/views/WP_Form_View_Form.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/hxevents/views/header.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/hxevents/views/footer.php",
+		"/Users/RidderGraniet/Downloads/gho-coolcolumns/gho-coolcolumns-manager.php",
+		"/Users/RidderGraniet/Downloads/custom-list-table-example/list-table-example.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/hxevents/inc/sunrise/options.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/hxevents/assets/html/manager-events.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/hxevents/sunrise.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/hxevents/classes/sunrise.class.php",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/hxevents/schema.sql",
+		"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/hxevents/classes/hxevents.php",
+		"/Users/RidderGraniet/Sites/welen/welen.sublime-project",
+		"/Users/RidderGraniet/Sites/st-projects/hxevents.sublime-project",
+		"/Users/RidderGraniet/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/RidderGraniet/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/RidderGraniet/Sites/labs/blog-page.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"debug",
+			"select",
+			"_clean_input_keys",
+			"uploadBtn",
+			"upload-column",
+			"show",
+			"Scotty.",
+			"Scotty.BaseObject",
+			"Scotty.Clip",
+			"Scotty.File",
+			"BaseObject",
+			"Scotty.",
+			"Clip.prototype",
+			"Fiat",
+			"properties",
+			"post(",
+			"Playlist",
+			"media",
+			"onFileUploadProgress",
+			"db",
+			"button",
+			"class=\"sortable\"",
+			"well",
+			"span",
+			"error_log",
+			"print_r",
+			"status",
+			"em_booking_save_pre",
+			"status",
+			"error_log",
+			"owner",
+			"admin",
+			"public",
+			"bookings_table_row_",
+			"bookings_table_row_col",
+			"get_headers",
+			"get_row",
+			"$this->cols",
+			"add_total",
+			"bookings_table_rows_col",
+			"process_field_data_and_return",
+			"page",
+			"user_cs_name",
+			"error",
+			"bookings_table_rows_col",
+			"wptest_cb_fields",
+			"wptest_cb_field_data",
+			"field_label",
+			"field_description",
+			"field_required",
+			"hx_events_manage_custom_form_fields",
+			"field_required",
+			"booking_save",
+			"get_bookings",
+			"get_row(",
+			"maybe_un",
+			"booking_meta",
+			"meta",
+			"get_row",
+			"validate",
+			"custom booking forms",
+			"());\n",
+			"WP_Form_View",
+			"url",
+			"event_max_attendees",
+			"link",
+			"CREATE TABLE IF NOT EXISTS",
+			"PRIMARY KEY ",
+			"wptest_hxevents_(.+?) ",
+			"wptest_",
+			"this",
+			"hxevents",
+			"my_awesome_wp_plugin"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"scotty.",
+			"scotty.base",
+			"scotty.clip",
+			"scotty.file",
+			"base",
+			"scotty.",
+			"Scotty.Clip.prototype",
+			"Location",
+			"CREATE TABLE",
+			"PRIMARY KEY  ",
+			"{{$1}} ",
+			"{{$1}}",
+			""
+		],
+		"reverse": false,
+		"show_context": false,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 2014,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								809
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2.0,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5.0,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10.0,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/views/header.php",
+					"settings":
+					{
+						"buffer_size": 809,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								809,
+								809
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2.0,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5.0,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10.0,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"parse",
+				"trunk/application/libraries/parsecsv.lib.php"
+			],
+			[
+				"csv",
+				"trunk/application/libraries/CSVImporter.php"
+			],
+			[
+				"css",
+				"realscotty/views/static/css/main.css"
+			],
+			[
+				"index",
+				"realscotty/views/static/index.html"
+			],
+			[
+				"mysq",
+				"mysql_connection.php"
+			],
+			[
+				"main",
+				"js/main.js"
+			],
+			[
+				"plugn",
+				"js/plugins.js"
+			],
+			[
+				"rob",
+				"robots.txt"
+			],
+			[
+				"booking_",
+				"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/custombooking/views/booking_form.php"
+			],
+			[
+				"custombookingforms",
+				"/Users/RidderGraniet/Sites/wp-test/wp-content/plugins/events-manager/templates/forms/bookingform/ticket-single.php"
+			],
+			[
+				"wp_form_de",
+				"wp-content/plugins/wp-forms-master/classes/views/decorators/WP_Form_Decorator.php"
+			],
+			[
+				"san",
+				"wp-content/plugins/hxevents/classes/sanity.class.php"
+			],
+			[
+				"manager",
+				"wp-content/plugins/hxevents/assets/html/manager-events.php"
+			],
+			[
+				"sunrise",
+				"wp-content/plugins/hxevents/classes/sunrise.class.php"
+			],
+			[
+				"plugin",
+				"wp-content/plugins/hxevents/inc/plugin-actions.php"
+			],
+			[
+				"",
+				"untitled"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 214.0,
+	"status_bar_visible": true
+}
