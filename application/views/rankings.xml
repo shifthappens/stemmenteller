@@ -1,0 +1,19 @@
+<xml version="1.0">
+    <movies>
+        <movie rank="1">
+            <name>82 Days in April</name>
+            <grade>8.2</grade>
+            <votes>276</votes>
+        </movie>
+        <movie rank="2">
+            <name>Amazon</name>
+            <grade>7.4</grade>
+            <votes>125</votes>
+        </movie>
+        <movie rank="3">
+            <name>Een vlucht regenwulpen</name>
+            <grade>7.2</grade>
+            <votes>200</votes>
+        </movie>
+    </movies>
+</xml>

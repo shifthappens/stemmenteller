@@ -35,14 +35,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->driver('session');
+	}
+
 	public function index()
 	{
+		//already logged in?
+		if($this->session->userdata('loggedin'))
+			redirect('admin/dashboard', 'location');
+
 		$this->load->view('admin/index');
 	}
 
 	public function login()
 	{
-		redirect('admin/dashboard', 'location');
+		//already logged in?
+		if($this->session->userdata('loggedin'))
+			redirect('admin/dashboard', 'location');
+
+		//shady business?
+		if(!$this->input->post('username'))
+			redirect('admin/index');
+
+		//check log in details
+		$user = $this->input->post('username');
+		$pwd = $this->input->post('password');
+
+		$this->load->model('Users_model');
+
+		if(!$this->Users_model->check_credentials($user, $pwd))
+		{
+			$error = "Gebruikersnaam of wachtwoord onjuist.";
+			$this->load->view('admin/index', array('message' => array('type' => 'danger', 'text' => $error)));
+		}
+		else
+		{
+			$this->session->set_userdata('loggedin', TRUE);
+			redirect('admin/dashboard', 'location');
+		}
 	}
 
 	public function dashboard()
@@ -89,5 +122,19 @@ class Admin extends CI_Controller {
 			$this->load->view('admin/votes');
 			break;
 		}
+	}
+
+	public function dopassword()
+	{
+		$pwd = password_hash('test', PASSWORD_BCRYPT);
+		echo $pwd;
+		var_dump(password_verify('test', $pwd));
+	}
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('admin', 'location');
+
 	}
 }

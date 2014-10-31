@@ -6,7 +6,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Films beheren <small>3 films in totaal</small></h1>
-          <a class="btn btn-danger btn-default" href="movies/add"><span class="glyphicon glyphicon-plus"></span> Nieuwe Film toevoegen</a>
+          <a class="btn btn-danger btn-default" href="admin/movies/add"><span class="glyphicon glyphicon-plus"></span> Nieuwe Film toevoegen</a>
             <table id="movies" class="table table-striped sortr">
                 <thead>
                     <th class="sortr-sortable">Film titel</th>

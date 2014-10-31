@@ -6,7 +6,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Stemmen beheren</h1>
-          <a type="button" class="btn btn-danger btn-default" href="votes/add"><span class="glyphicon glyphicon-plus"></span> Nieuwe Stemuitslag Toevoegen</a>
+          <a type="button" class="btn btn-danger btn-default" href="admin/votes/add"><span class="glyphicon glyphicon-plus"></span> Nieuwe Stemuitslag Toevoegen</a>
             <table id="votes" class="table table-striped sortr">
                 <thead>
                     <th class="sortr-sortable">Film titel</th>

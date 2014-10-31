@@ -82,8 +82,8 @@ select.movie-name {
    height: 34px;
 }
 
-.vote-grade-values input { width: 50px; height: 35px; font-size: larger; text-align: center; }
-.vote-grade-values label { text-align: center; font-size: x-large; display: block; padding: 2px; }
+input.big-digits { width: 50px; height: 35px; font-size: larger; text-align: center; }
+label.big-digits { text-align: center; font-size: x-large; display: block; padding: 2px; }
 
 /*
  * Base structure
