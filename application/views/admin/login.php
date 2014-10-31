@@ -6,4 +6,8 @@
         <input type="password" name="password" placeholder="Wachtwoord..." />
         <button id="btn-login" class="btn btn-danger" type="submit">Inloggen</button>
     </form>
+    <br />
+    <?php if(isset($message)): ?>
+    <div class="alert alert-<?=$message['type']?>" role="alert"><?=$message['text']?></div>
+    <?php endif; ?>
 </div>

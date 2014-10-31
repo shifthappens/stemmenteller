@@ -21,10 +21,23 @@
                             </td>
                         </tr>
                         <tr>
+                            <td class="setting-name">Stemmen automatisch uit op</td>
+                            <td class="setting-value">
+                                <input type="date" name="voting_ends_date" />
+                                <input type="text" name="voting_ends_time" placeholder="UU:MM" />
+                            </td>
+                        </tr>
+                        <tr>
                             <td class="setting-name">Tussenstand weergave</td>
                             <td class="setting-value">
                                 <span class="radio-choice"><input type="radio" checked name="show_ranking_status" value="1" /> Aan</span>
                                 <span class="radio-choice"><input type="radio" name="show_ranking_status" value="0" /> Uit</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="setting-name">Minimum aantal stemmen</td>
+                            <td class="setting-value">
+                                <input type="text" name="voting_minimum" value="100" />
                             </td>
                         </tr>
                         <tr>

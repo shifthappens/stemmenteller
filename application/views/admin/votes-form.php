@@ -41,34 +41,39 @@ $this->load->view('admin/loginbar');
                             <td class="vote-grade-values">
                                 <div class="form-inline">
                                     <div class="form-group">
-                                        <input type="text" name="vote_grade_value[5]" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[5]" />
                                         <br />
-                                        <label>5</label>
+                                        <label class="big-digits">5</label>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="vote_grade_value[5]" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[5]" />
                                         <br />
-                                        <label>4</label>
+                                        <label class="big-digits">4</label>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="vote_grade_value[5]" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[5]" />
                                         <br />
-                                        <label>3</label>
+                                        <label class="big-digits">3</label>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="vote_grade_value[5]" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[5]" />
                                         <br />
-                                        <label>2</label>
+                                        <label class="big-digits">2</label>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="vote_grade_value[5]" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[5]" />
                                         <br />
-                                        <label>1</label>
+                                        <label class="big-digits">1</label>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
+                            <td><input name="vote_num_visitors" type="text" class="big-digits" /> <label>Bezoekers</label></td>
+                        </tr>
+                        <tr>
+                            <td><input name="vote_num_visitors_volunteer" type="text" class="big-digits" /> <label>Vrijwilligers</label></td>
+                        </tr>
                             <td id="savechanges"><button class="btn btn-danger" type="submit">Stemuitslag opslaan</button>
                         </tr>
                     </tbody>
