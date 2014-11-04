@@ -71,20 +71,25 @@ table a.btn { margin-right: 10px; }
 
 /* Votes */
 
-select.movie-name {
+select.movie-name, select.showing-id {
    background: transparent;
-   width: 268px;
+   width: auto;
    padding: 5px;
    font-size: 30px;
    line-height: 1;
    border: 0;
    border-radius: 0;
-   height: 34px;
+   height: 36px;
+}
+
+select.showing-id[disabled] {
+  color: grey;
+  width: auto;
 }
 
 input.big-digits { width: 50px; height: 35px; font-size: larger; text-align: center; }
 label.big-digits { text-align: center; font-size: x-large; display: block; padding: 2px; }
-
+input.clock-digits { font-size: smaller; width: 50px; }
 /*
  * Base structure
  */
