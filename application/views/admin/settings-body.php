@@ -6,42 +6,28 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h1 class="page-header">Instellingen aanpassen</h1>
-            <form action="settings" method="post">
+            <form action="admin/settings" method="post">
                 <table id="settings" class="table table-striped">
                     <tbody>
                         <tr>
                             <td class="setting-name">Festival Titel</td>
-                            <td class="setting-value"><input type="text" name="festival_name" value="NFF35" /></td>
-                        </tr>
-                        <tr>
-                            <td class="setting-name">Stemmen</td>
-                            <td class="setting-value">
-                                <span class="radio-choice"><input type="radio" checked name="voting_status" value="1" /> Aan</span>
-                                <span class="radio-choice"><input type="radio" name="voting_status" value="0" /> Uit</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="setting-name">Stemmen automatisch uit op</td>
-                            <td class="setting-value">
-                                <input type="date" name="voting_ends_date" />
-                                <input type="text" name="voting_ends_time" placeholder="UU:MM" />
-                            </td>
+                            <td class="setting-value"><input type="text" name="settings[festival_name]" value="<?=$this->config->item('festival_name')?>" /></td>
                         </tr>
                         <tr>
                             <td class="setting-name">Tussenstand weergave</td>
                             <td class="setting-value">
-                                <span class="radio-choice"><input type="radio" checked name="show_ranking_status" value="1" /> Aan</span>
-                                <span class="radio-choice"><input type="radio" name="show_ranking_status" value="0" /> Uit</span>
+                                <span class="radio-choice"><input type="radio" <?=$this->config->item('show_ranking_status') == 'top5' ? 'checked' : '' ?> name="settings[show_ranking_status]" value="top5" /> Top 5</span>
+                                <span class="radio-choice"><input type="radio" <?=$this->config->item('show_ranking_status') == 'from4' ? 'checked' : '' ?> name="settings[show_ranking_status]" value="from4" /> Vanaf plek 4</span>
                             </td>
                         </tr>
                         <tr>
                             <td class="setting-name">Minimum aantal stemmen</td>
                             <td class="setting-value">
-                                <input type="text" name="voting_minimum" value="100" />
+                                <input type="text" name="settings[voting_minimum]" value="<?=$this->config->item('voting_minimum')?>" />
                             </td>
                         </tr>
                         <tr>
-                            <td colspan="2" id="savechanges"><button class="btn btn-danger" type="submit">Wijzigingen opslaan</button>
+                            <td colspan="2" id="savechanges"><button class="btn btn-danger" type="submit" name="submit" value="submit">Wijzigingen opslaan</button>
                         </tr>
                     </tbody>
                 </table>

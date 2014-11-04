@@ -16,7 +16,7 @@
         <script src="<?=base_url()?>js/vendor/modernizr-2.6.2.min.js"></script>
         <base href="<?=base_url()?>"></base>
     </head>
-    <body>
+    <body class="<?=$this->uri->segment(1, 'rankings')?>">
         <!--[if lt IE 8]>
             <p class="browsehappy">U gebruikt een <strong>verouderde</strong> versie van uw browser. <a href="http://browsehappy.com/">Update uw browser</a> om deze website goed te bekijken.</p>
         <![endif]-->

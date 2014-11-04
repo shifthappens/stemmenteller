@@ -55,6 +55,7 @@ $this->load->view('admin/loginbar');
                                     <option value="2014-11-06" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2014-11-06') === true ? 'selected' : set_select('movie_showings[$i][date]', '2014-11-06')?>>do 6 nov</option>
                                     <option value="2014-11-07" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2014-11-07') === true ? 'selected' : set_select('movie_showings[$i][date]', '2014-11-07')?>>vr 7 nov</option>
                                     <option value="2014-11-08" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2014-11-08') === true ? 'selected' : set_select('movie_showings[$i][date]', '2014-11-08')?>>za 8 nov</option>
+                                    <option value="2014-11-09" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2014-11-09') === true ? 'selected' : set_select('movie_showings[$i][date]', '2014-11-09')?>>zo 9 nov</option>
                                 </select>
                                 <input name="movie_showings[<?=$i?>][hour]" class="clock-digits" value="<?= $editing && isset($showing[$i]) ? date('H', $showing[$i]['showing_datetime']) : set_value('movie_showings[$i][hour]') ?>" />
                                 <span>:</span>

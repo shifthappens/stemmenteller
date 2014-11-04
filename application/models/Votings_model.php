@@ -75,7 +75,7 @@ class Votings_model extends CI_Model {
         $grades = $this->db->select('grades')->where('movie_id', $movie_id)->get('votings');
 
         if($grades->num_rows() == 0)
-            return "Onbekend";
+            return array('grade' => "Onbekend", 'totalvotes' => 0);
 
         $totals = array(1 => 0, 2 => 0, 3 => 0, 4 => 0, 5 => 0);
 
@@ -91,8 +91,12 @@ class Votings_model extends CI_Model {
 
         $totalvotes = $totals[1] + $totals[2] + $totals[3] + $totals[4] + $totals[5];
         $average = ($totals[1] * 1) + ($totals[2] * 2) + ($totals[3] * 3) + ($totals[4] * 4) + ($totals[5] * 5);
+        $grade = ($average / $totalvotes) * 2;
+        $gradeinfo = array('grade' => $grade, 'totalvotes' => $totalvotes);
 
-        return $average / $totalvotes;
+        log_message('debug', 'gradeinfo = '.print_r($gradeinfo, true));
+
+        return $gradeinfo;
 
     }
 }

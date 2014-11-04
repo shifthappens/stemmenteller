@@ -17,6 +17,40 @@
 
 .btn { outline: none !important; }
 
+/* RANKINGS DISPLAY */
+
+@font-face {
+    font-family: 'dtl_nobelt_bold';
+    src: url('../fonts/dtlnobelt-bold-webfont.eot');
+    src: url('../fonts/dtlnobelt-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/dtlnobelt-bold-webfont.woff2') format('woff2'),
+         url('../fonts/dtlnobelt-bold-webfont.woff') format('woff'),
+         url('../fonts/dtlnobelt-bold-webfont.ttf') format('truetype'),
+         url('../fonts/dtlnobelt-bold-webfont.svg#dtl_nobelt_bold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ITCFranklinGothicStd-MdCd';
+    src: url('../fonts/ITCFranklinGothicStd-MdCd.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+ @font-face {
+    font-family: 'ITCFranklinGothicStd-BkCp';
+    src: url('../fonts/ITCFranklinGothicStd-BkCp.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body.rankings { background: url(../img/nffbg.jpg) no-repeat; background-size: 100% 100%; }
+body.rankings h1 { font-size: 52px; color: #000; font-family: 'dtl_nobelt_bold', "Helvetica Neue"; text-transform: uppercase; }
+body.rankings li { font-size: 40px; color: #000; font-family: 'ITCFranklinGothicStd-MdCd', "Helvetica Neue"; }
+body.rankings li strong { font-size: 42px; font-weight: 800; }
+
 
 /* ADMIN AREA */
 #loginbox {
