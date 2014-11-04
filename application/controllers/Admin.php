@@ -39,6 +39,8 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->driver('session');
+		$this->load->model('Settings_model');
+		$this->Settings_model->load();
 	}
 
 	public function index()
@@ -85,6 +87,14 @@ class Admin extends CI_Controller {
 
 	public function settings()
 	{
+		log_message('debug', 'postdata = '.print_r($this->input->post(), true));
+		$this->load->model('Settings_model');
+
+		if($this->input->post('submit') == TRUE)
+		{
+			log_message('debug', 'settings submit exists');
+			$this->Settings_model->update($this->input->post('settings'));
+		}
 		$this->load->view('admin/settings');
 	}
 
@@ -205,7 +215,7 @@ class Admin extends CI_Controller {
 				}
 			}
 
-			$this->load->view('admin/votes-form', array('votings' => $votings));
+			$this->load->view('admin/votes-form', array('movies' => $movies));
 
 			break;
 

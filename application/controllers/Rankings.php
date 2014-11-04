@@ -56,6 +56,9 @@ class Rankings extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->model('Settings_model');
+		$this->Settings_model->load();
+		
 		$top = $this->get_top();
 
 		$this->load->view('main/index', array('top' => $top));
@@ -89,8 +92,11 @@ class Rankings extends CI_Controller {
 
 		foreach($all_movies->result() as $movie)
 		{
-			$grades[$i]['grade'] = $this->Votings_model->calculate_grade($movie->movie_id);
+			$gradeinfo = $this->Votings_model->calculate_grade($movie->movie_id);
+	        log_message('debug', 'gradeinfo = '.print_r($gradeinfo, true));			
+			$grades[$i]['grade'] = $gradeinfo['grade'];
 			$grades[$i]['movie_name'] = $movie->movie_name;
+			$grades[$i]['totalvotes'] = $gradeinfo['totalvotes'];
 			$i++;
 		}
 

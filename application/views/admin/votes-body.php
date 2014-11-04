@@ -18,7 +18,7 @@
                     <?php foreach($votings->result() as $voting): ?>
                     <tr>
                         <td class="movie-name"><?=$voting->movie_name?></td>
-                   {}     <td class="movie-name"><?=strftime('%a %e %b %H:%M', $voting->showing_datetime)?></td>
+                        <td class="movie-name"><?=strftime('%a %e %b %H:%M', $voting->showing_datetime)?></td>
                         <td class="vote-timestamp" data-sortr-sortby="<?=$voting->voting_datetime?>"><?=strftime('%a %e %b %H:%M', $voting->voting_datetime)?></td>
                         <td class="actions">
                             <a href="admin/votes/edit/<?=$voting->voting_id?>" class="btn btn-danger btn-xs">Bewerken</a>
