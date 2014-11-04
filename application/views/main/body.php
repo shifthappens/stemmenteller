@@ -1,6 +1,6 @@
 <h1>Stemmen tot nu toe</h1>
 <ol>
-    <li>Lord of the Rings</li>
-    <li>The Avengers</li>
-    <li>Inception</li>
+<?php foreach($top as $movie): ?>
+    <li><?php echo $movie['grade'] == 'Onbekend' ? 'Nog niet bekend' : $movie['movie_name'].' ('.round($movie['grade'], 1).')'?></li>
+<?php endforeach; ?>
 </ol>

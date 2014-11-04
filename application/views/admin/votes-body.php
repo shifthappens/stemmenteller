@@ -1,3 +1,4 @@
+<?php setlocale(LC_TIME, 'nl_NL'); ?>
 <?php $this->load->view('admin/loginbar'); ?>
     <div class="container-fluid">
       <div class="row">
@@ -10,28 +11,20 @@
             <table id="votes" class="table table-striped sortr">
                 <thead>
                     <th class="sortr-sortable">Film titel</th>
+                    <th class="sortr-nonsortable">Vertoonmoment</th>
                     <th class="sortr-sortable">Tijdstip van invoer</th>
-                    <th class="sortr-nonsortable">Stemronde</th>
                     <th class="sortr-nonsortable">Acties</th>
                 <tbody>
+                    <?php foreach($votings->result() as $voting): ?>
                     <tr>
-                        <td class="movie-name">82 dagen in April</td>
-                        <td class="vote-timestamp" data-sortr-sortby="10000">do 6 nov, 13:37</td>
-                        <td class="vote-round">2</td>
-                        <td class="actions"><a href="admin/votes/edit" class="btn btn-danger btn-xs">Bewerken</a><a class="btn btn-danger btn-xs" href="admin/votes/delete">Verwijderen</a></td>
+                        <td class="movie-name"><?=$voting->movie_name?></td>
+                   {}     <td class="movie-name"><?=strftime('%a %e %b %H:%M', $voting->showing_datetime)?></td>
+                        <td class="vote-timestamp" data-sortr-sortby="<?=$voting->voting_datetime?>"><?=strftime('%a %e %b %H:%M', $voting->voting_datetime)?></td>
+                        <td class="actions">
+                            <a href="admin/votes/edit/<?=$voting->voting_id?>" class="btn btn-danger btn-xs">Bewerken</a>
+                            <a class="btn btn-danger btn-xs" href="admin/votes/delete/<?=$voting->voting_id?>">Verwijderen</a></td>
                     </tr>
-                    <tr>
-                        <td class="setting-name">Nordic horror night</td>
-                        <td class="vote-timestamp">woe 6 nov, 10:37</td>
-                        <td class="vote-round">1</td>
-                        <td class="actions"><a href="admin/votes/edit" class="btn btn-danger btn-xs">Bewerken</a><a class="btn btn-danger btn-xs" href="admin/votes/delete">Verwijderen</a></td>
-                    </tr>
-                    <tr>
-                        <td class="setting-name">Antboy</td>
-                        <td class="vote-timestamp">woe 6 nov, 09:37</td>
-                        <td class="vote-round">1</td>
-                        <td class="actions"><a href="admin/votes/edit" class="btn btn-danger btn-xs">Bewerken</a><a class="btn btn-danger btn-xs" href="admin/votes/delete">Verwijderen</a></td>
-                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

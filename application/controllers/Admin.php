@@ -90,46 +90,142 @@ class Admin extends CI_Controller {
 
 	public function movies()
 	{
+		$this->load->model('Movies_model');
+		$this->load->library('form_validation');
+		$this->load->helper('form');
+
 		switch($this->uri->segment(3))
 		{
 			case 'add':
+			if($this->input->post('submit') !== NULL)
+			{
+				//we have a new movie to add
+
+				//check the input
+				$this->form_validation->set_rules('movie_name', 'Film Titel', 'required');
+				$this->form_validation->set_rules('movie_can_win', 'Dingt mee voor de prijs', 'required');
+
+				if($this->form_validation->run() === TRUE)
+				{
+					$postdata = $this->input->post();
+
+					log_message('debug', 'postdata = '.print_r($postdata, TRUE));
+
+					if($this->Movies_model->insert($postdata) === TRUE)
+					{
+						$this->session->set_userdata('message', 'Toevoegen was succesvol.');
+						$this->session->set_userdata('message-type', 'success');
+					}
+					else
+					{
+						$this->session->set_userdata('message', 'Toevoegen ging niet goed.');
+						$this->session->set_userdata('message-type', 'danger');						
+					}
+				}
+			}
+
 			$this->load->view('admin/movies-form');
 			break;
 
 			case 'edit':
-			$this->load->view('admin/movies-form');
+			$this->load->model('Showings_model');
+			$movie = $this->Movies_model->get($this->uri->segment(4));
+			$showing = $this->Showings_model->get_by_movie($this->uri->segment(4));
+
+			if($this->input->post('submit') !== FALSE)
+			{
+				//update an existing entry.
+				$this->form_validation->set_rules('movie_name', 'Film Titel', 'required');
+				$this->form_validation->set_rules('movie_can_win', 'Dingt mee voor de prijs', 'required');
+
+				if($this->form_validation->run() === TRUE)
+				{
+					$postdata = $this->input->post();
+
+					log_message('debug', 'postdata = '.print_r($postdata, TRUE));
+
+					if($this->Movies_model->update($postdata) === TRUE)
+					{
+						$this->session->set_userdata('message', 'Aanpassen was succesvol.');
+						$this->session->set_userdata('message-type', 'success');
+					}
+					else
+					{
+						$this->session->set_userdata('message', 'Aanpassen ging niet goed.');
+						$this->session->set_userdata('message-type', 'danger');						
+					}
+				}
+
+			}
+
+			$this->load->view('admin/movies-form', array('movie' => $movie, 'showing' => $this->Showings_model->transform_to_array($showing)));
 			break;
 
 			default:
-			$this->load->view('admin/movies');
+			$movies = $this->Movies_model->get();
+			$this->load->view('admin/movies', array('movies' => $movies));
 			break;
 		}
 	}
 
 	public function votes()
 	{
+		$this->load->model('Movies_model');
+		$this->load->model('Votings_model');
+		$this->load->library('form_validation');
+		$this->load->helper('form');
+
 		switch($this->uri->segment(3))
 		{
 			case 'add':
-			$this->load->view('admin/votes-form');
+			$movies = $this->Movies_model->get();
+			if($this->input->post('submit') !== NULL)
+			{
+				//we have a new voting to add
+				$postdata = $this->input->post();
+
+				log_message('debug', 'postdata = '.print_r($postdata, TRUE));
+
+				//check the input
+				$this->form_validation->set_rules('movie_id', 'Film', 'required', array('required' => 'Kies een film!'));
+				$this->form_validation->set_rules('showing_id', 'Vertoonmoment', 'required', array('required' => 'Kies een Vertoonmoment!'));
+
+				if($this->form_validation->run() === TRUE)
+				{
+					if($this->Votings_model->insert($postdata) === TRUE)
+					{
+						$this->session->set_userdata('message', 'Toevoegen was succesvol.');
+						$this->session->set_userdata('message-type', 'success');
+					}
+					else
+					{
+						$this->session->set_userdata('message', 'Toevoegen ging niet goed.');
+						$this->session->set_userdata('message-type', 'danger');						
+					}
+				}
+			}
+
+			$this->load->view('admin/votes-form', array('votings' => $votings));
+
 			break;
 
 			case 'edit':
-			$this->load->view('admin/votes-form');
+			$this->load->view('admin/votes-form', array('movies' => $movies));
 			break;
 
 			default:
-			$this->load->view('admin/votes');
+			$votings = $this->Votings_model->get();
+			$this->load->view('admin/votes', array('votings' => $votings));
 			break;
 		}
 	}
 
-	public function dopassword()
-	{
-		$pwd = password_hash('test', PASSWORD_BCRYPT);
-		echo $pwd;
-		var_dump(password_verify('test', $pwd));
-	}
+	// public function dopassword()
+	// {
+	// 	$pwd = password_hash('test', PASSWORD_BCRYPT);
+	// 	echo $pwd;
+	// 	var_dump(password_verify('test', $pwd));
+	// }
 
 	public function logout()
 	{
@@ -137,4 +233,26 @@ class Admin extends CI_Controller {
 		redirect('admin', 'location');
 
 	}
+
+	//AJAX functions
+	public function ajax_get_showings_for_movie()
+	{
+		$this->load->model('Movies_model');
+		
+		$this->load->view('admin/ajax-get-showings-response', 
+			array('response' => $this->Movies_model->get_showings_for_movie($this->input->post('movie_id'))));
+	}
+}
+
+function date_match($timestamp, $datestring)
+{
+	if(empty($timestamp))
+		return false;
+
+	log_message('debug', 'timestamp = '.$timestamp.' ('.date('Y-m-d', $timestamp).') & datestring = '.$datestring);
+
+	if(date('Y-m-d', $timestamp) == $datestring)
+		return true;
+	else
+		return false;
 }

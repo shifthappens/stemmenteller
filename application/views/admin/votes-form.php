@@ -20,48 +20,76 @@ $this->load->view('admin/loginbar');
             <?php endif; ?>
         </h1>
 
-            <form action="settings" method="post">
+        <?php if($this->session->userdata('message') !== NULL): ?>
+        <div class="alert alert-<?=$this->session->userdata('message-type')?>"><?=$this->session->userdata('message')?></div>
+        <?php endif; ?>
+
+        <?php if($this->session->userdata('message-type') === "success"): ?>
+        <a class="btn btn-danger" href="admin/votes/add">Voeg nog een Stemuitslag toe</a>
+        <?php
+            $this->session->unset_userdata('message-type');
+            $this->session->unset_userdata('message');
+            else:
+                if(count($this->form_validation->error_array()) != 0):
+        ?>
+        <div class="alert alert-danger form-errors">
+        <?php
+            echo validation_errors('<li>', '</li>');
+        ?>
+        </div>
+        <?php
+                endif;
+        ?>
+
+            <form action="admin/votes/add" method="post">
                 <table id="vote" class="table table-striped">
                     <tbody>
                         <tr>
                             <td class="movie-name">
-                            <select name="movie-name" class="movie-name">
-                                <option value="NULL">Kies een Film</option>
-                                <option value="NULL" disabled>---------------</option>
-                                <option value="12">82 Days in April</option>
-                                <option value="12">82 Days in April</option>
-                                <option value="12">82 Days in April</option>
-                                <option value="12">82 Days in April</option>
-                                <option value="12">82 Days in April</option>
-                                <option value="12">82 Days in April</option>
+                            <select name="movie_id" class="movie-name" id="movie-name-for-showings">
+                                <option value="">Kies een Film</option>
+                                <option value="" disabled>---------------</option>
+                                <?php foreach($movies->result() as $movie): ?>
+                                <option value="<?=$movie->movie_id?>" <?=set_select('movie_id')?>><?=$movie->movie_name?></option>
+                                <?php endforeach; ?>
                             </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="showing-id">
+                            <select name="showing_id" class="showing-id" id="showing-ids" disabled>
+                                <option value="">Wacht op filmkeuze...</option>
+                                <option value="">Kies een Vertoonmoment</option>
+                                <option value="" disabled>---------------</option>
+                            </select>
+                            <input type="hidden" id="showing-id-saved" value="<?=$this->input->post('showing_id')?>" />
                             </td>
                         </tr>
                         <tr>
                             <td class="vote-grade-values">
                                 <div class="form-inline">
                                     <div class="form-group">
-                                        <input class="big-digits" type="text" name="vote_grade_value[5]" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[5]" value="<?=set_value('vote_grade_value[5]', '0')?>" />
                                         <br />
                                         <label class="big-digits">5</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="big-digits" type="text" name="vote_grade_value[5]" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[4]" value="<?=set_value('vote_grade_value[4]', '0')?>" />
                                         <br />
                                         <label class="big-digits">4</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="big-digits" type="text" name="vote_grade_value[5]" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[3]" value="<?=set_value('vote_grade_value[3]', '0')?>" />
                                         <br />
                                         <label class="big-digits">3</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="big-digits" type="text" name="vote_grade_value[5]" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[2]" value="<?=set_value('vote_grade_value[2]', '0')?>" />
                                         <br />
                                         <label class="big-digits">2</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="big-digits" type="text" name="vote_grade_value[5]" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[1]" value="<?=set_value('vote_grade_value[1]', '0')?>" />
                                         <br />
                                         <label class="big-digits">1</label>
                                     </div>
@@ -69,16 +97,17 @@ $this->load->view('admin/loginbar');
                             </td>
                         </tr>
                         <tr>
-                            <td><input name="vote_num_visitors" type="text" class="big-digits" /> <label>Bezoekers</label></td>
+                            <td><input name="num_visitors" type="text" class="big-digits" value="<?=set_value('num_visitors', '0')?>" /> <label>Bezoekers</label></td>
                         </tr>
                         <tr>
-                            <td><input name="vote_num_visitors_volunteer" type="text" class="big-digits" /> <label>Vrijwilligers</label></td>
+                            <td><input name="num_volunteers" type="text" class="big-digits" value="<?=set_value('num_volunteers', '0')?>" /> <label>Vrijwilligers</label></td>
                         </tr>
-                            <td id="savechanges"><button class="btn btn-danger" type="submit">Stemuitslag opslaan</button>
+                            <td id="savechanges"><button class="btn btn-danger" type="submit" name="submit">Stemuitslag opslaan</button>
                         </tr>
                     </tbody>
                 </table>
             </form>
+<?php endif; ?>
         </div>
       </div>
     </div>
