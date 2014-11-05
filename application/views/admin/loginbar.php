@@ -7,11 +7,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">#NFF35 StemmenTeller Beheer</a>
+          <a class="navbar-brand" href="#"><?=$this->config->item('festival_name') ?> StemmenTeller Beheer</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Welkom, <strong>Margret</strong>.</a></li>
+            <li><a href="#">Welkom, <strong><?=$this->session->userdata('user_name')?></strong>.</a></li>
             <li><a href="admin/logout" class="btn btn-link btn-danger">Log uit</a></li>
           </ul>
         </div>

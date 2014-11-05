@@ -46,10 +46,12 @@
 }
 
 
-body.rankings { background: url(../img/nffbg.jpg) no-repeat; background-size: 100% 100%; }
-body.rankings h1 { font-size: 52px; color: #000; font-family: 'dtl_nobelt_bold', "Helvetica Neue"; text-transform: uppercase; }
-body.rankings li { font-size: 40px; color: #000; font-family: 'ITCFranklinGothicStd-MdCd', "Helvetica Neue"; }
-body.rankings li strong { font-size: 42px; font-weight: 800; }
+body.rankings { background: url(../img/nffbg.jpg) no-repeat fixed; background-size: 100% 100%; }
+body.rankings h1, body.rankings h3 { font-size: 58px; color: #000; font-family: 'dtl_nobelt_bold', "Helvetica Neue"; text-transform: uppercase; }
+body.rankings h3 { font-size: 24px; color: #333 }
+body.rankings li { font-size: 46px; color: #000; font-weight: 800; font-family: 'ITCFranklinGothicStd-MdCd', "Helvetica Neue"; }
+body.rankings li strong { font-size: 48px; font-weight: 800; }
+body.rankings .container { height: 100%; }
 
 
 /* ADMIN AREA */

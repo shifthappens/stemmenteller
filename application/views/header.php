@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title><?=$this->config->item('festival_name') ?> StemmenTeller Beheer</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,6 +17,6 @@
         <base href="<?=base_url()?>"></base>
     </head>
     <body class="<?=$this->uri->segment(1, 'rankings')?>">
-        <!--[if lt IE 8]>
+        <!--[if lte IE 8]>
             <p class="browsehappy">U gebruikt een <strong>verouderde</strong> versie van uw browser. <a href="http://browsehappy.com/">Update uw browser</a> om deze website goed te bekijken.</p>
         <![endif]-->

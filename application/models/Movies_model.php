@@ -41,27 +41,32 @@ class Movies_model extends CI_Model {
         $this->load->database();
     }
 
-    public function get($id = FALSE)
+    public function get($id = FALSE, $only_can_win = FALSE)
     {
-        if($id === FALSE)
-            return $this->db->select('*')->order_by('movie_name', 'asc')->get('movies');
-        else
-            return $this->db->get_where('movies', array('movie_id' => $id), 0, 1)->row();
+        $this->db->select('*');
+        $this->db->order_by('movie_name', 'asc');
+        
+        if($id !== FALSE)
+            $this->db->where('movies', array('movie_id' => $id), 0, 1);
+        
+        if($only_can_win === TRUE)
+            $this->db->where('movie_can_win', '1');
+
+        return $this->db->get('movies');
     }
 
-    public function insert($newmovie)
+    public function insert($newmovie, $parse_datetime = TRUE)
     {       
         $this->db->insert('movies', array('movie_name' => $newmovie['movie_name'], 'movie_can_win' => $newmovie['movie_can_win']));
         $insert_id = $this->db->insert_id();
 
         foreach($newmovie['movie_showings'] as $showing)
         {
-            if($showing['date'] != "NULL")
+            if( (isset($showing['date']) && $showing['date'] != "NULL") || isset($showing['showing_datetime']))
             {
+                $timestamp = $parse_datetime === TRUE ? strtotime($showing['date'].' '.$showing['hour'].':'.$showing['minutes']) : $showing['showing_datetime'];
                 $showing['movie_id'] = $insert_id;
-                $showing['showing_datetime'] = strtotime($showing['date'].' '.$showing['hour'].':'.$showing['minutes']);
-                log_message('debug', 'showing = '.print_r($showing, TRUE));
-                $this->db->insert('showings', array('movie_id' => $showing['movie_id'], 'showing_datetime' => $showing['showing_datetime']));
+                $this->db->insert('showings', array('movie_id' => $showing['movie_id'], 'showing_datetime' => $timestamp));
             }
         }
 

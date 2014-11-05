@@ -53,4 +53,9 @@ class Users_model extends CI_Model {
         return password_verify($password, $user->user_password);
     }
 
+    public function get($user)
+    {
+        return $this->db->where('user_name', $user)->get('users')->row();
+    }
+
 }

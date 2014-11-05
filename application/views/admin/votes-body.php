@@ -11,17 +11,20 @@
             <table id="votes" class="table table-striped sortr">
                 <thead>
                     <th class="sortr-sortable">Film titel</th>
-                    <th class="sortr-nonsortable">Vertoonmoment</th>
+                    <th class="sortr-sortable">Vertoonmoment</th>
                     <th class="sortr-sortable">Tijdstip van invoer</th>
+                    <th class="sortr-sortable">Bezoekers</th>
+                    <th class="sortr-sortable">Vrijwilligers</th>
                     <th class="sortr-nonsortable">Acties</th>
                 <tbody>
                     <?php foreach($votings->result() as $voting): ?>
                     <tr>
                         <td class="movie-name"><?=$voting->movie_name?></td>
-                        <td class="movie-name"><?=strftime('%a %e %b %H:%M', $voting->showing_datetime)?></td>
+                        <td class="showing-datetime" data-sortr-sortby="<?=$voting->showing_datetime?>"><?=strftime('%a %e %b %H:%M', $voting->showing_datetime)?></td>
                         <td class="vote-timestamp" data-sortr-sortby="<?=$voting->voting_datetime?>"><?=strftime('%a %e %b %H:%M', $voting->voting_datetime)?></td>
+                        <td class="vote-num-visitors"><?=$voting->num_visitors?></td>
+                        <td class="vote-num-volunteers"><?=$voting->num_volunteers?></td>
                         <td class="actions">
-                            <a href="admin/votes/edit/<?=$voting->voting_id?>" class="btn btn-danger btn-xs">Bewerken</a>
                             <a class="btn btn-danger btn-xs" href="admin/votes/delete/<?=$voting->voting_id?>">Verwijderen</a></td>
                     </tr>
                     <?php endforeach; ?>
