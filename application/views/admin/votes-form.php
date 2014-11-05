@@ -9,7 +9,7 @@ $this->load->view('admin/loginbar');
             <?php $this->load->view('admin/sidenav'); ?>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <a href="javascript:history.back(-1);" class="btn btn-danger btn-sm">&laquo; Terug</a>
+          <a href="admin/votes" class="btn btn-danger btn-sm">&laquo; Terug</a>
           <br /><br />
           <h1 class="page-header">
             <?php if($this->uri->segment(3) == "add"): $editing = FALSE; ?>

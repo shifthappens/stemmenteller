@@ -76,17 +76,36 @@ class Admin extends CI_Controller {
 		else
 		{
 			$this->session->set_userdata('loggedin', TRUE);
-			redirect('admin/dashboard', 'location');
+			$user = $this->Users_model->get($user);
+
+			$this->session->set_userdata('user_name', $user->user_name);
+			$this->session->set_userdata('user_level', $user->user_level);
+
+			switch($this->session->userdata('user_level'))
+			{
+				//full admin rights (0 = highest)
+				case '0':
+				redirect('admin/dashboard', 'location');
+				break;
+
+				//just a manager / volunteer
+				case '1':
+				redirect('admin/votes', 'location');
+			}
 		}
 	}
 
 	public function dashboard()
 	{
+		security_check();
+
 		$this->load->view('admin/dashboard');
 	}
 
 	public function settings()
 	{
+		security_check();
+
 		log_message('debug', 'postdata = '.print_r($this->input->post(), true));
 		$this->load->model('Settings_model');
 
@@ -100,6 +119,8 @@ class Admin extends CI_Controller {
 
 	public function movies()
 	{
+		security_check();
+
 		$this->load->model('Movies_model');
 		$this->load->library('form_validation');
 		$this->load->helper('form');
@@ -180,6 +201,8 @@ class Admin extends CI_Controller {
 
 	public function votes()
 	{
+		security_check();
+
 		$this->load->model('Movies_model');
 		$this->load->model('Votings_model');
 		$this->load->library('form_validation');
@@ -265,4 +288,12 @@ function date_match($timestamp, $datestring)
 		return true;
 	else
 		return false;
+}
+
+function security_check()
+{
+	$ci =& get_instance();
+
+	if(!$ci->session->userdata('loggedin'))
+	redirect('admin');
 }
