@@ -32,24 +32,17 @@
 }
 
 @font-face {
-    font-family: 'ITCFranklinGothicStd-MdCd';
-    src: url('../fonts/ITCFranklinGothicStd-MdCd.otf');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'ITCFranklinGothicStd-MdCd';
+  src: url('../fonts/ITCFranklinGothicStd-MdCd.eot?#iefix') format('embedded-opentype'),  url('../fonts/ITCFranklinGothicStd-MdCd.otf')  format('opentype'),
+       url('../fonts/ITCFranklinGothicStd-MdCd.woff') format('woff'), url('../fonts/ITCFranklinGothicStd-MdCd.ttf')  format('truetype'), url('../fonts/ITCFranklinGothicStd-MdCd.svg#ITCFranklinGothicStd-MdCd') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
-
- @font-face {
-    font-family: 'ITCFranklinGothicStd-BkCp';
-    src: url('../fonts/ITCFranklinGothicStd-BkCp.otf');
-    font-weight: normal;
-    font-style: normal;
-}
-
 
 body.rankings { background: url(../img/nffbg.jpg) no-repeat fixed; background-size: 100% 100%; }
-body.rankings h1, body.rankings h3 { font-size: 58px; color: #000; font-family: 'dtl_nobelt_bold', "Helvetica Neue"; text-transform: uppercase; }
+body.rankings h1, body.rankings h3 { font-size: 58px; color: #000; font-family: 'dtl_nobelt_bold', "Helvetica Neue", Helvetica, Arial; text-transform: uppercase; }
 body.rankings h3 { font-size: 24px; color: #333 }
-body.rankings li { font-size: 46px; color: #000; font-weight: 800; font-family: 'ITCFranklinGothicStd-MdCd', "Helvetica Neue"; }
+body.rankings li { font-size: 46px; color: #000; font-weight: 800; font-family: 'ITCFranklinGothicStd-MdCd', "Helvetica Neue", Helvetica, Arial; }
 body.rankings li strong { font-size: 48px; font-weight: 800; }
 body.rankings .container { height: 100%; }
 
