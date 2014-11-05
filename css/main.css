@@ -33,19 +33,51 @@
 
 @font-face {
   font-family: 'ITCFranklinGothicStd-MdCd';
+  src: url('../fonts/ITCFranklinGothicStd-MdCd.eot');
   src: url('../fonts/ITCFranklinGothicStd-MdCd.eot?#iefix') format('embedded-opentype'),  url('../fonts/ITCFranklinGothicStd-MdCd.otf')  format('opentype'),
        url('../fonts/ITCFranklinGothicStd-MdCd.woff') format('woff'), url('../fonts/ITCFranklinGothicStd-MdCd.ttf')  format('truetype'), url('../fonts/ITCFranklinGothicStd-MdCd.svg#ITCFranklinGothicStd-MdCd') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-body.rankings { background: url(../img/nffbg.jpg) no-repeat fixed; background-size: 100% 100%; }
+body.rankings { 
+  background: url(../img/nffbg.jpg) no-repeat fixed;
+  background-size: cover; 
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/nffbg.jpg', sizingMethod='scale');
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='img/nffbg.jpg', sizingMethod='scale')";
+}
 body.rankings h1, body.rankings h3 { font-size: 58px; color: #000; font-family: 'dtl_nobelt_bold', "Helvetica Neue", Helvetica, Arial; text-transform: uppercase; }
 body.rankings h3 { font-size: 24px; color: #333 }
-body.rankings li { font-size: 46px; color: #000; font-weight: 800; font-family: 'ITCFranklinGothicStd-MdCd', "Helvetica Neue", Helvetica, Arial; }
+body.rankings li { 
+  font-size: 46px; 
+  color: #000; 
+  font-weight: 800; 
+  font-family: 'ITCFranklinGothicStd-MdCd', "Helvetica Neue", Helvetica, Arial;
+}
+
+body.rankings li::before {
+  content: counter(rank) ". ";
+  counter-increment: rank;
+  float: left;
+  width: 60px;
+}
+
+body.rankings ol {
+  list-style: none;
+  counter-reset: rank;
+}
+
+body.rankings ol.from4 {
+  counter-reset: rank 3;
+}
+
 body.rankings li strong { font-size: 48px; font-weight: 800; }
 body.rankings .container { height: 100%; }
 
+/* IE8 margin stuff */
+.lt-ie9 h1, .lt-ie9 h3 { margin-left: 126px; }
+.lt-ie9 ol { margin-left: 156px; }
+.lt-ie9 #barometer { margin-top: 30px; }
 
 /* ADMIN AREA */
 #loginbox {

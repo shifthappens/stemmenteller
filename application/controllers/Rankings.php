@@ -156,6 +156,11 @@ class Rankings extends CI_Controller {
     		return $a['grade'] > $b['grade'] ? -1 : 1;
 			});
 
-		return array_slice($grades, 0, 5);
+		if($this->config->item('show_ranking_status') == 'from4' && $only_can_win === TRUE)
+			$offset = 3;
+		else
+			$offset = 0;
+
+		return array_slice($grades, $offset, 5);
 	}
 }

@@ -1,11 +1,14 @@
 (function($){
     $('.sortr').sortr({ ignore: 'th.sortr-nonsortable' });
-    $('#movie-name-for-showings').on('change', getShowings);
+    $('#movie-name-for-showings').on('change', getShowings).trigger('change');
     $('.btn-delete').on('click', confirmDeletion);
 })(jQuery);
 
 function getShowings(event, c)
 {
+    if($(event.target).val() == "NULL" || $(event.target).val() == "")
+        return;
+
     $.post('admin/ajax_get_showings_for_movie', 
     {
         movie_id: $(event.target).val()
