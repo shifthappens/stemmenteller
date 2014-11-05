@@ -25,7 +25,7 @@
                         <td class="vote-num-visitors"><?=$voting->num_visitors?></td>
                         <td class="vote-num-volunteers"><?=$voting->num_volunteers?></td>
                         <td class="actions">
-                            <a class="btn btn-danger btn-xs" href="admin/votes/delete/<?=$voting->voting_id?>">Verwijderen</a></td>
+                            <a class="btn btn-danger btn-xs btn-delete" href="admin/votes/delete/<?=$voting->voting_id?>">Verwijderen</a></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

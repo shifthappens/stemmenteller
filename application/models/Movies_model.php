@@ -94,4 +94,10 @@ class Movies_model extends CI_Model {
         return $this->db->select('*')->order_by('showing_datetime', 'asc')->where(array('movie_id' => $movie_id))->get('showings');
     }
 
+    public function delete($movie_id)
+    {
+        $this->db->delete('showings', array('movie_id' => $movie_id));
+        $this->db->delete('movies', array('movie_id' => $movie_id));
+    }
+
 }
