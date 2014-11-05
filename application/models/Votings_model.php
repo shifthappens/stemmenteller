@@ -99,4 +99,9 @@ class Votings_model extends CI_Model {
         return $gradeinfo;
 
     }
+
+    public function delete($voting_id)
+    {
+        $this->db->delete('votings', array('voting_id' => $voting_id));
+    }
 }

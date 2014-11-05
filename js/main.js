@@ -1,6 +1,7 @@
 (function($){
     $('.sortr').sortr({ ignore: 'th.sortr-nonsortable' });
     $('#movie-name-for-showings').on('change', getShowings);
+    $('.btn-delete').on('click', confirmDeletion);
 })(jQuery);
 
 function getShowings(event, c)
@@ -17,4 +18,10 @@ function populateShowings(response)
     select.prop('disabled', false);
     select.children().remove();
     select.append(response);
+}
+
+function confirmDeletion(event)
+{
+    if(!confirm('Weet je het zeker? Dit kan niet ongedaan worden gemaakt!'))
+        return false;
 }

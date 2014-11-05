@@ -21,7 +21,7 @@ foreach($movies->result() as $movie): ?>
                         <td class="movie-name"><?=$movie->movie_name?></td>
 <!--                         <td class="movie-grade">6,8</td> -->
                         <td class="actions"><a href="admin/movies/edit/<?=$movie->movie_id?>" class="btn btn-danger btn-xs">Bewerken</a>
-                            <a class="btn btn-danger btn-xs" href="admin/movies/delete/<?=$movie->movie_id?>">Verwijderen</a></td>
+                            <a class="btn btn-danger btn-xs btn-delete" href="admin/movies/delete/<?=$movie->movie_id?>">Verwijderen</a></td>
                     </tr>
 <?php endforeach; ?>
                 </tbody>

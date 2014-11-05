@@ -192,6 +192,16 @@ class Admin extends CI_Controller {
 			$this->load->view('admin/movies-form', array('movie' => $movie, 'showing' => $this->Showings_model->transform_to_array($showing)));
 			break;
 
+			case 'delete':
+			if($this->Movies_model->delete($this->uri->segment(4)))
+			{
+				$this->session->set_userdata('message', 'Verwijderen was succesvol.');
+				$this->session->set_userdata('message-type', 'success');				
+			}
+			redirect('admin/movies', 'location');
+			break;
+
+
 			default:
 			$movies = $this->Movies_model->get();
 			$this->load->view('admin/movies', array('movies' => $movies));
@@ -242,8 +252,13 @@ class Admin extends CI_Controller {
 
 			break;
 
-			case 'edit':
-			$this->load->view('admin/votes-form', array('movies' => $movies));
+			case 'delete':
+			if($this->Votings_model->delete($this->uri->segment(4)))
+			{
+				$this->session->set_userdata('message', 'Verwijderen was succesvol.');
+				$this->session->set_userdata('message-type', 'success');				
+			}
+			redirect('admin/votes', 'location');
 			break;
 
 			default:
