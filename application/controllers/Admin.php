@@ -160,6 +160,7 @@ class Admin extends CI_Controller {
 
 			case 'edit':
 			$this->load->model('Showings_model');
+			log_message('debug', 'segment = '.$this->uri->segment(4));
 			$movie = $this->Movies_model->get($this->uri->segment(4));
 			$showing = $this->Showings_model->get_by_movie($this->uri->segment(4));
 

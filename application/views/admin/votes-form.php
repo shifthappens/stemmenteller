@@ -50,7 +50,7 @@ $this->load->view('admin/loginbar');
                                 <option value="">Kies een Film</option>
                                 <option value="" disabled>---------------</option>
                                 <?php foreach($movies->result() as $movie): ?>
-                                <option value="<?=$movie->movie_id?>" <?=set_select('movie_id')?>><?=$movie->movie_name?></option>
+                                <option value="<?=$movie->movie_id?>" <?=set_select('movie_id', $movie->movie_id)?>><?=$movie->movie_name?></option>
                                 <?php endforeach; ?>
                             </select>
                             </td>

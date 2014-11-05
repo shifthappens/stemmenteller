@@ -47,7 +47,7 @@ class Movies_model extends CI_Model {
         $this->db->order_by('movie_name', 'asc');
         
         if($id !== FALSE)
-            $this->db->where('movies', array('movie_id' => $id), 0, 1);
+            return $this->db->where('movie_id', $id)->limit(1)->get('movies')->row();
         
         if($only_can_win === TRUE)
             $this->db->where('movie_can_win', '1');
