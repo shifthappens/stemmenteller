@@ -12,16 +12,28 @@
                 <thead>
                     <th class="sortr-sortable">Film titel</th>
                     <th class="sortr-sortable">Vertoonmoment</th>
-                    <th class="sortr-sortable">Tijdstip van invoer</th>
+                    <th class="sortr-sortable">Invoertijd</th>
+                    <th class="sortr-nonsortable">5</th>
+                    <th class="sortr-nonsortable">4</th>
+                    <th class="sortr-nonsortable">3</th>
+                    <th class="sortr-nonsortable">2</th>
+                    <th class="sortr-nonsortable">1</th>
+                    <th class="sortr-nonsortable">Totaal</th>
                     <th class="sortr-sortable">Bezoekers</th>
-                    <th class="sortr-sortable">Vrijwilligers</th>
+                    <th class="sortr-sortable">Vrijw.</th>
                     <th class="sortr-nonsortable">Acties</th>
                 <tbody>
-                    <?php foreach($votings->result() as $voting): ?>
+                    <?php foreach($votings->result() as $voting): $voting->grades = unserialize($voting->grades); ?>
                     <tr>
                         <td class="movie-name"><?=$voting->movie_name?></td>
                         <td class="showing-datetime" data-sortr-sortby="<?=$voting->showing_datetime?>"><?=strftime('%a %e %b %H:%M', $voting->showing_datetime)?></td>
                         <td class="vote-timestamp" data-sortr-sortby="<?=$voting->voting_datetime?>"><?=strftime('%a %e %b %H:%M', $voting->voting_datetime)?></td>
+                        <td class="vote-num-votes"><?=$voting->grades[5]?></td>
+                        <td class="vote-num-votes"><?=$voting->grades[4]?></td>
+                        <td class="vote-num-votes"><?=$voting->grades[3]?></td>
+                        <td class="vote-num-votes"><?=$voting->grades[2]?></td>
+                        <td class="vote-num-votes"><?=$voting->grades[1]?></td>
+                        <td class="vote-num-votes"><?=$voting->grades[1] + $voting->grades[2] + $voting->grades[3] + $voting->grades[4] + $voting->grades[5]?></td>
                         <td class="vote-num-visitors"><?=$voting->num_visitors?></td>
                         <td class="vote-num-volunteers"><?=$voting->num_volunteers?></td>
                         <td class="actions">

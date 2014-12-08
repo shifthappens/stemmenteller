@@ -58,9 +58,12 @@ class Rankings extends CI_Controller {
 	{
 		$this->load->model('Settings_model');
 		$this->Settings_model->load();
+
+		$this->load->helper('nff');
+		check_time_based_actions();
 		
 		$top = $this->get_top(TRUE);
-		$barometer = $this->get_top(FALSE);
+		$barometer = $this->get_top(FALSE, FALSE);
 
 		$this->load->view('main/index', array('top' => $top, 'barometer' => $barometer));
 
@@ -135,7 +138,7 @@ class Rankings extends CI_Controller {
 	// 	}
 	// }
 
-	private function get_top($only_can_win = TRUE)
+	private function get_top($only_can_win = TRUE, $only_enough_votes = TRUE)
 	{
 		$grades = array();
 		$this->load->model('Movies_model');
@@ -146,6 +149,10 @@ class Rankings extends CI_Controller {
 		foreach($all_movies->result() as $movie)
 		{
 			$gradeinfo = $this->Votings_model->calculate_grade($movie->movie_id);
+
+			if($gradeinfo['totalvotes'] < $this->config->item('voting_minimum') && $only_enough_votes === TRUE)
+				continue; //only keep those with the set amount of minimum votes
+
 			$grades[$i]['grade'] = $gradeinfo['grade'];
 			$grades[$i]['movie_name'] = $movie->movie_name;
 			$grades[$i]['totalvotes'] = $gradeinfo['totalvotes'];
@@ -161,6 +168,6 @@ class Rankings extends CI_Controller {
 		else
 			$offset = 0;
 
-		return array_slice($grades, $offset, 5);
+		return array_slice($grades, $offset, 5, TRUE);
 	}
 }

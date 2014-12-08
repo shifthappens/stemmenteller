@@ -55,16 +55,8 @@ body.rankings li {
   font-family: 'ITCFranklinGothicStd-MdCd', "Helvetica Neue", Helvetica, Arial;
 }
 
-body.rankings li::before {
-  content: counter(rank) ". ";
-  counter-increment: rank;
-  float: left;
-  width: 60px;
-}
-
 body.rankings ol {
   list-style: none;
-  counter-reset: rank;
 }
 
 body.rankings ol.from4 {
