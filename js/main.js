@@ -2,6 +2,7 @@
     $('.sortr').sortr({ ignore: 'th.sortr-nonsortable' });
     $('#movie-name-for-showings').on('change', getShowings).trigger('change');
     $('.btn-delete').on('click', confirmDeletion);
+    $('.toggleactions').on('click', toggleActionsColumn);
 })(jQuery);
 
 function getShowings(event, c)
@@ -27,4 +28,12 @@ function confirmDeletion(event)
 {
     if(!confirm('Weet je het zeker? Dit kan niet ongedaan worden gemaakt!'))
         return false;
+}
+
+function toggleActionsColumn(event)
+{
+    $('th.actions-th, td.actions').toggle();
+    $('th.star-th, td.movie-can-win').toggle();
+    $('th.totalvotes-th, td.movie-totalvotes').toggle();
+    $('#ahide, #ashow').toggle();
 }

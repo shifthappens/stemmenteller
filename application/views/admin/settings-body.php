@@ -21,6 +21,16 @@
                             </td>
                         </tr>
                         <tr>
+                            <td class="setting-name">Tussenstand weergave automatisch naar "Vanaf plek 4"</td>
+                            <td class="setting-value">
+                                <input type="text" size="1" value="<?=$this->config->item('show_ranking_auto_limit_day')?>" name="settings[show_ranking_auto_limit_day]" />
+                                <input type="text" size="1" value="<?=$this->config->item('show_ranking_auto_limit_month')?>" name="settings[show_ranking_auto_limit_month]" />
+                                <input type="text" size="4" value="<?=$this->config->item('show_ranking_auto_limit_year')?>" name="settings[show_ranking_auto_limit_year]" />
+                                <input type="text" size="1" value="<?=$this->config->item('show_ranking_auto_limit_hour')?>" name="settings[show_ranking_auto_limit_hour]" /> :
+                                <input type="text" size="1" value="<?=$this->config->item('show_ranking_auto_limit_minutes')?>" name="settings[show_ranking_auto_limit_minutes]" />
+                           </td>
+                        </tr>
+                        <tr>
                             <td class="setting-name">Minimum aantal stemmen</td>
                             <td class="setting-value">
                                 <input type="text" name="settings[voting_minimum]" value="<?=$this->config->item('voting_minimum')?>" />

@@ -57,7 +57,7 @@ class Settings_model extends CI_Model {
         foreach($settings as $key => $value)
         {
             $this->db->where(array('setting_name' => $key));
-            $this->db->update('settings', array('setting_value' => $value));
+            $this->db->replace('settings', array('setting_name' => $key, 'setting_value' => $value));
         }
 
         $this->load();

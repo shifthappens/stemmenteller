@@ -41,6 +41,8 @@ class Admin extends CI_Controller {
 		$this->load->driver('session');
 		$this->load->model('Settings_model');
 		$this->Settings_model->load();
+		$this->load->helper('nff');
+		check_time_based_actions();
 	}
 
 	public function index()
@@ -204,6 +206,7 @@ class Admin extends CI_Controller {
 
 
 			default:
+			$this->load->model('Votings_model');
 			$movies = $this->Movies_model->get();
 			$this->load->view('admin/movies', array('movies' => $movies));
 			break;
@@ -267,6 +270,15 @@ class Admin extends CI_Controller {
 			$this->load->view('admin/votes', array('votings' => $votings));
 			break;
 		}
+	}
+
+	public function export()
+	{
+		$this->load->model('Movies_model');
+		$this->load->model('Votings_model');
+		$movies = $this->Movies_model->get();
+		$this->load->view('admin/export', array('movies' => $movies));
+
 	}
 
 	// public function dopassword()

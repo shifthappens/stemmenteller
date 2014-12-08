@@ -45,8 +45,8 @@ class Votings_model extends CI_Model {
     {
         if($id === FALSE)
             return $this->db->select('votings.*, movies.movie_name, showings.showing_datetime')
-                    ->join('movies', 'votings.movie_id = movies.movie_id')
-                    ->join('showings', 'votings.showing_id = showings.showing_id')
+                    ->join('movies', 'votings.movie_id = movies.movie_id', 'left')
+                    ->join('showings', 'votings.showing_id = showings.showing_id', 'left')
                     ->order_by('voting_datetime', 'desc')
                     ->get('votings');
         else
@@ -93,8 +93,6 @@ class Votings_model extends CI_Model {
         $average = ($totals[1] * 1) + ($totals[2] * 2) + ($totals[3] * 3) + ($totals[4] * 4) + ($totals[5] * 5);
         $grade = ($average / $totalvotes) * 2;
         $gradeinfo = array('grade' => $grade, 'totalvotes' => $totalvotes);
-
-        log_message('debug', 'gradeinfo = '.print_r($gradeinfo, true));
 
         return $gradeinfo;
 
