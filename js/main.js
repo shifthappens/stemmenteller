@@ -2,6 +2,7 @@
     $('.sortr').sortr({ ignore: 'th.sortr-nonsortable' });
     $('#movie-name-for-showings').on('change', getShowings).trigger('change');
     $('.btn-delete').on('click', confirmDeletion);
+    $('.btn-purge').on('click', confirmPurge);
     $('.toggleactions').on('click', toggleActionsColumn);
 })(jQuery);
 
@@ -27,6 +28,13 @@ function populateShowings(response)
 function confirmDeletion(event)
 {
     if(!confirm('Weet je het zeker? Dit kan niet ongedaan worden gemaakt!'))
+        return false;
+}
+
+
+function confirmPurge(event)
+{
+    if(!confirm('Weet je het absoluut zeker? De database wordt geleegd en je begint met een schone lei. Dit is onomkeerbaar.'))
         return false;
 }
 

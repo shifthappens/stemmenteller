@@ -111,4 +111,9 @@ class Votings_model extends CI_Model {
     {
         $this->db->delete('votings', array('voting_id' => $voting_id));
     }
+
+    public function delete_all()
+    {
+        $this->db->empty_table('votings');
+    }
 }

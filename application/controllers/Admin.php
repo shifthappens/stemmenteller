@@ -274,11 +274,43 @@ class Admin extends CI_Controller {
 
 	public function export()
 	{
+		security_check();
+
 		$this->load->model('Movies_model');
 		$this->load->model('Votings_model');
 		$movies = $this->Movies_model->get();
 		$this->load->view('admin/export', array('movies' => $movies));
 
+	}
+
+	public function purge()
+	{
+		security_check();
+		$this->load->model('Movies_model');
+		$this->load->model('Votings_model');
+		$this->load->model('Showings_model');
+
+		$this->db->trans_begin();
+
+		$this->Movies_model->delete_all();
+		$this->Votings_model->delete_all();
+
+		if($this->db->trans_status() === FALSE)
+		{
+			//error
+			$this->db->trans_rollback();
+			$this->session->set_flashdata('message', "Het verwijderen van alle films, vertoonmomenten en stemuitslagen kon niet worden voltooid. De oude gegevens zijn teruggezet, niets is verloren gegaan.");
+			$this->session->set_flashdata('message-type', "warning");
+		}
+		else
+		{
+			//success
+			$this->db->trans_commit();
+			$this->session->set_flashdata('message', "Het verwijderen van alle films, vertoonmomenten en stemuitslagen is voltooid.");
+			$this->session->set_flashdata('message-type', "success");
+		}
+
+		redirect('admin/settings');
 	}
 
 	// public function dopassword()
