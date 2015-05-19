@@ -74,6 +74,8 @@ class Votings_model extends CI_Model {
     {
         $grades = $this->db->select('grades')->where('movie_id', $movie_id)->get('votings');
 
+        log_message('debug', 'grades: '.$grades->num_rows());
+
         if($grades->num_rows() == 0)
             return array('grade' => "Onbekend", 'totalvotes' => 0);
 
@@ -91,7 +93,14 @@ class Votings_model extends CI_Model {
 
         $totalvotes = $totals[1] + $totals[2] + $totals[3] + $totals[4] + $totals[5];
         $average = ($totals[1] * 1) + ($totals[2] * 2) + ($totals[3] * 3) + ($totals[4] * 4) + ($totals[5] * 5);
-        $grade = ($average / $totalvotes) * 2;
+        log_message('debug', 'movie = '.$movie_id.', totalvotes = '.$totalvotes.', average = '.$average);
+
+        /* If nobody voted in this screening, it can happen that the total votes cast is 0, causing a divide by zero warning */
+        if($totalvotes == 0)
+            $grade = "Onbekend";
+        else 
+            $grade = ($average / $totalvotes) * 2;
+        
         $gradeinfo = array('grade' => $grade, 'totalvotes' => $totalvotes);
 
         return $gradeinfo;
