@@ -26,12 +26,9 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * @package	CodeIgniter
- * @author	EllisLab Dev Team
- * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (http://ellislab.com/)
- * @copyright	Copyright (c) 2014, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
- * @link	http://codeigniter.com
+ * @package	NFF Stemmenteller
+ * @author	Coen de Jong <coen@shifthappens.nl>
+ * @copyright	Copyright (c) 2014, shifthappens. (http://shifthappens.nl/)
  * @since	Version 1.0.0
  * @filesource
  */
@@ -39,21 +36,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Rankings extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		$this->load->model('Settings_model');
@@ -83,60 +65,61 @@ class Rankings extends CI_Controller {
 	}
 
 	//change to public to enable import functionality
-	// private function import()
-	// {
-	// 	$f = file_get_contents('/Users/RidderGraniet/Sites/stemmenteller/lijst.csv');
-	// 	$this->load->library('parsecsv', NULL, 'csv');
-	// 	$this->csv->delimiter = ';';
-	// 	$this->csv->input_encoding = "UTF-8";
-	// 	$this->csv->parse($f);
-	// 	//echo "<pre>".print_r($this->csv->data, true)."</pre>";
+/*
+	private function import()
+	{
+	$f = file_get_contents('/Users/RidderGraniet/Sites/stemmenteller/lijst.csv');
+	$this->load->library('parsecsv', NULL, 'csv');
+	$this->csv->delimiter = ';';
+	$this->csv->input_encoding = "UTF-8";
+	$this->csv->parse($f);
+	//echo "<pre>".print_r($this->csv->data, true)."</pre>";
+	$this->load->model('Movies_model');
+	
+	$movies = array();
+	$showings = array();
 
-	// 	$this->load->model('Movies_model');
+	foreach($this->csv->data as $key => $entry)
+ 	{
+		//don't do this one if noentry is set
+ 		if(trim($entry['noentry']) == 'x')
+			continue;
 
-	// 	$movies = array();
-	// 	$showings = array();
+ 		//movie itself
+ 		if(strpos($entry['prize'], 'ja') !== FALSE)
+ 			$entry['movie_can_win'] = 1;
+ 		else
+ 			$entry['movie_can_win'] = 0;
 
-	// 	foreach($this->csv->data as $key => $entry)
-	// 	{
-	// 		//don't do this one if noentry is set
-	// 		if(trim($entry['noentry']) == 'x')
-	// 			continue;
-
-	// 		//movie itself
-	// 		if(strpos($entry['prize'], 'ja') !== FALSE)
-	// 			$entry['movie_can_win'] = 1;
-	// 		else
-	// 			$entry['movie_can_win'] = 0;
-
-	// 		$movie = array(
-	// 			'movie_name' => $entry['Titel film'],
-	// 			'movie_can_win' => $entry['movie_can_win']
-	// 			);
+ 		$movie = array(
+ 			'movie_name' => $entry['Titel film'],
+ 			'movie_can_win' => $entry['movie_can_win']
+ 			);
 
 
-	// 		if(!empty(trim($entry['Tijd1'])))
-	// 		{
-	// 			$date = explode('-', $entry['Datum1']);
-	// 			$movie['movie_showings'][0]['showing_datetime'] = strtotime($date[2].'-'.$date[1].'-'.$date[0].' '.$entry['Tijd1']);
-	// 		}
+ 		if(!empty(trim($entry['Tijd1'])))
+ 		{
+ 			$date = explode('-', $entry['Datum1']);
+ 			$movie['movie_showings'][0]['showing_datetime'] = strtotime($date[2].'-'.$date[1].'-'.$date[0].' '.$entry['Tijd1']);
+ 		}
 
-	// 		if(!empty(trim($entry['tijd2'])))
-	// 		{
-	// 			$movie['movie_showings'][1]['showing_datetime'] = strtotime($entry['datum2'].'-14 '.$entry['tijd2']);
-	// 		}
+ 		if(!empty(trim($entry['tijd2'])))
+ 		{
+ 			$movie['movie_showings'][1]['showing_datetime'] = strtotime($entry['datum2'].'-14 '.$entry['tijd2']);
+ 		}
 
-	// 		if(!empty(trim($entry['tijd3'])))
-	// 		{
-	// 			$movie['movie_showings'][2]['showing_datetime'] = strtotime($entry['datum3'].'-14 '.$entry['tijd3']);
-	// 		}
+ 		if(!empty(trim($entry['tijd3'])))
+ 		{
+ 			$movie['movie_showings'][2]['showing_datetime'] = strtotime($entry['datum3'].'-14 '.$entry['tijd3']);
+ 		}
 
-	// 		$this->Movies_model->insert($movie, FALSE);
-	// 		echo "Inserted '".$movie['movie_name']."' into db. <br />";
-	// 		//echo "<pre>".print_r($movie, true)."</pre>";
+ 		$this->Movies_model->insert($movie, FALSE);
+ 		echo "Inserted '".$movie['movie_name']."' into db. <br />";
+ 		//echo "<pre>".print_r($movie, true)."</pre>";
 
-	// 	}
-	// }
+ 	}
+} 
+*/
 
 	private function get_top($only_can_win = TRUE, $only_enough_votes = TRUE)
 	{
