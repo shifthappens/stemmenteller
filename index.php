@@ -98,7 +98,7 @@ switch (ENVIRONMENT)
  * Include the path if the folder is not in the same directory
  * as this file.
  */
-	$system_path = '/Users/RidderGraniet/Sites/frameworks/codeigniter/system';
+	$system_path = '/Users/coen/Sites/frameworks/codeigniter/system';
 
 /*
  *---------------------------------------------------------------
