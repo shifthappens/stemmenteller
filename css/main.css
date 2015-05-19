@@ -72,6 +72,9 @@ body.rankings .container { height: 100%; }
 .lt-ie9 #barometer { margin-top: 30px; }
 
 /* ADMIN AREA */
+.purge-warning-message { padding: 15px; margin-bottom: 25px; }
+.nice-padding { padding: 15px; margin-bottom: 15px; }
+
 #loginbox {
     position: fixed;
     top: 10%;

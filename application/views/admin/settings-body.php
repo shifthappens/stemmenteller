@@ -5,6 +5,11 @@
             <?php $this->load->view('admin/sidenav'); ?>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <?php if($this->session->flashdata('message')): ?>
+            <div class="bg-<?=$this->session->flashdata('message-type')?> nice-padding"><strong><?=$this->session->flashdata('message')?></strong></div>
+            <?php endif; ?>
+
           <h1 class="page-header">Instellingen aanpassen</h1>
             <form action="admin/settings" method="post">
                 <table id="settings" class="table table-striped">
@@ -38,6 +43,19 @@
                         </tr>
                         <tr>
                             <td colspan="2" id="savechanges"><button class="btn btn-danger" type="submit" name="submit" value="submit">Wijzigingen opslaan</button>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Alles verwijderen</h1>
+          <div class="bg-warning purge-warning-message"><p><strong>Let op!</strong><br />Hiermee verwijder je alle films, vertoonmomenten en stemuitslagen uit de database. Dit kan niet meer ongedaan worden gemaakt!</p></div>
+            <form action="admin/purge" method="post">
+                <table id="settings" class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td colspan="2" id="savechanges" align="center"><button class="btn btn-danger btn-lg btn-purge" type="submit" name="submit" value="submit">Alle films en stemuitslagen verwijderen</button>
                         </tr>
                     </tbody>
                 </table>

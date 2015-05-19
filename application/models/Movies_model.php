@@ -100,4 +100,10 @@ class Movies_model extends CI_Model {
         $this->db->delete('movies', array('movie_id' => $movie_id));
     }
 
+    public function delete_all()
+    {
+        $this->db->empty_table('movies');
+        $this->db->empty_table('showings');
+    }
+
 }
