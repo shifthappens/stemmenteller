@@ -39,7 +39,7 @@ class Rankings extends CI_Controller {
 	public function index()
 	{
 		$this->load->model('Settings_model');
-		$this->Settings_model->load();
+		$this->Settings_model->load_settings();
 
 		$this->load->helper('nff');
 		check_time_based_actions();

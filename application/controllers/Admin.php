@@ -28,7 +28,7 @@
  *
  * @package StemmenTeller
  * @author	shifthappens <coen@shifthappens.nl>
- * @copyright	Copyright (c) 2014, shifthappens
+ * @copyright	Copyright (c) 2014-2015, shifthappens
  */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -40,8 +40,8 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->driver('session');
 		$this->load->model('Settings_model');
-		$this->Settings_model->load();
-		$this->load->helper('nff');
+		$this->Settings_model->load_settings();
+		$this->load->helper(array('nff', 'url', 'form'));
 		check_time_based_actions();
 	}
 
@@ -110,13 +110,57 @@ class Admin extends CI_Controller {
 
 		log_message('debug', 'postdata = '.print_r($this->input->post(), true));
 		$this->load->model('Settings_model');
+		$file_upload_errors = FALSE;
+		$message = FALSE;
 
 		if($this->input->post('submit') == TRUE)
 		{
-			log_message('debug', 'settings submit exists');
-			$this->Settings_model->update($this->input->post('settings'));
+			$settings = $this->input->post('settings');
+
+			//File upload is optional, so we need to check if a file has been uploaded
+			//if there is a file uploaded, run the upload sequence
+			if(isset($_FILES['background_image']) && $_FILES['background_image']['size'] > 0)
+			{
+				$file_was_uploaded = TRUE;
+				$config['upload_path'] = './uploads/';
+				$config['allowed_types'] = 'jpg|png';
+				$config['max_size']	= '2048'; //in kb
+				$config['encrypt_name'] = TRUE;
+
+				$this->load->library('upload', $config);
+
+				if ( ! $this->upload->do_upload('background_image'))
+				{
+					$upload_successful = FALSE;
+					log_message('debug', 'upload error.');
+					$file_upload_errors = $this->upload->display_errors();
+					$this->load->view('admin/settings', array('upload_errors' => $file_upload_errors));
+				}
+				else
+				{
+					$upload_successful = TRUE;
+					$file_data = $this->upload->data();
+
+					$settings['background_image_url'] = $file_data['file_name'];
+					$this->Settings_model->update($settings);
+					$message = 'De instellingen zijn opgeslagen.';
+					$this->load->view('admin/settings', array('message' => $message));
+				}
+			}
+			else
+			{
+				//No file uploads
+							
+				$this->Settings_model->update($settings);
+				$message = 'De instellingen zijn opgeslagen.';
+
+				$this->load->view('admin/settings', array('message' => $message));
+			}
 		}
-		$this->load->view('admin/settings');
+		else
+		{
+			$this->load->view('admin/settings');			
+		}
 	}
 
 	public function movies()

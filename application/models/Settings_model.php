@@ -41,7 +41,7 @@ class Settings_model extends CI_Model {
         $this->load->database();
     }
 
-    public function load()
+    public function load_settings()
     {
         $settings = $this->db->get('settings');
 
@@ -60,7 +60,7 @@ class Settings_model extends CI_Model {
             $this->db->replace('settings', array('setting_name' => $key, 'setting_value' => $value));
         }
 
-        $this->load();
+        $this->load_settings();
     }
 
 }
