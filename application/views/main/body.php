@@ -1,5 +1,10 @@
-<!-- <div style="width: 1366px; height: 768px; border: 2px solid red; position: absolute; top: 0; left: 0;"></div> -->
-<!-- <div class="container">
+<!-- <div style="width: 1366px; height: 768px; border: 2px solid red; position: absolute; top: 0; left: 0;"></div>
+ -->
+ <div class="container">
+    <?php
+    if(trim($this->config->item('custom_text')) != ''):
+            echo strip_tags($this->config->item('custom_text'), '<h1><h2><h3><h4><h5><h6><p><a><strong><em><i><br><hr>');
+    else: ?>
     <div id="publieksprijs">
         <h1 id="h1-pp">Tussenstand Publieksprijs</h1>
         <ol class="<?=$this->config->item('show_ranking_status')?>">
@@ -20,4 +25,5 @@
         <?php endforeach; ?>
         </ol>
     </div>
-</div> -->
+    <?php endif; ?>
+</div>

@@ -15,5 +15,13 @@
         <link rel="stylesheet" href="<?=base_url()?>css/main.css">
         <script src="<?=base_url()?>js/vendor/modernizr-2.6.2.min.js"></script>
         <base href="<?=base_url()?>"></base>
+        <style tye="text/css">
+            body.rankings { 
+              background: url('./uploads/<?=$this->config->item('background_image_url')?>') no-repeat fixed;
+              background-size: cover; 
+              filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./uploads/<?=$this->config->item('background_image_url')?>', sizingMethod='scale');
+              -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='./uploads/<?=$this->config->item('background_image_url')?>', sizingMethod='scale')";
+            }        
+        </style>
     </head>
     <body class="<?=$this->uri->segment(1, 'rankings')?>">

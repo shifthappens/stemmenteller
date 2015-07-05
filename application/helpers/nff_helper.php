@@ -15,6 +15,6 @@ function check_time_based_actions()
     {
         $ci->load->model('Settings_model');
         $ci->Settings_model->update(array('show_ranking_status' => 'from4'));
-        $ci->Settings_model->load();
+        $ci->Settings_model->load_settings();
     }
 }
