@@ -324,8 +324,111 @@ class Admin extends CI_Controller {
 		$this->load->model('Votings_model');
 		$movies = $this->Movies_model->get();
 		$this->load->view('admin/export', array('movies' => $movies));
-
 	}
+
+	public function do_import()
+	{
+		$f = file_get_contents('uploads/'.$this->session->userdata('import_filename'));
+		$this->load->library('parsecsv', NULL, 'csv');
+		$this->csv->delimiter = ';';
+		$this->csv->input_encoding = "UTF-8";
+		$this->csv->parse($f);
+		//echo "<pre>".print_r($this->csv->data, true)."</pre>";
+		$this->load->model('Movies_model');
+		
+		$movies = array();
+		$showings = array();
+
+		foreach($this->csv->data as $key => $entry)
+	 	{
+			//don't do this one if noentry is set
+	 		if(trim($entry['noentry']) == 'x')
+				continue;
+
+	 		//movie itself
+	 		if(strpos($entry['prize'], 'ja') !== FALSE)
+	 			$entry['movie_can_win'] = 1;
+	 		else
+	 			$entry['movie_can_win'] = 0;
+
+	 		$movie = array(
+	 			'movie_name' => $entry['Titel film'],
+	 			'movie_can_win' => $entry['movie_can_win']
+	 			);
+
+
+	 		if(!empty(trim($entry['Tijd1'])))
+	 		{
+	 			$date = explode('-', $entry['Datum1']);
+	 			$movie['movie_showings'][0]['showing_datetime'] = strtotime($date[2].'-'.$date[1].'-'.$date[0].' '.$entry['Tijd1']);
+	 		}
+
+	 		if(!empty(trim($entry['tijd2'])))
+	 		{
+	 			$movie['movie_showings'][1]['showing_datetime'] = strtotime($entry['datum2'].'-14 '.$entry['tijd2']);
+	 		}
+
+	 		if(!empty(trim($entry['tijd3'])))
+	 		{
+	 			$movie['movie_showings'][2]['showing_datetime'] = strtotime($entry['datum3'].'-14 '.$entry['tijd3']);
+	 		}
+
+	 		$this->Movies_model->insert($movie, FALSE);
+	 		echo "Inserted '".$movie['movie_name']."' into db. <br />";
+	 		//echo "<pre>".print_r($movie, true)."</pre>";
+
+	 	}
+	}
+
+	public function import()
+	{
+		security_check();
+
+		if($this->input->post('upload_submit'))
+		{
+			//first upload the file
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'csv|txt';
+			$config['max_size']	= '2048'; //in kb
+			$config['encrypt_name'] = TRUE;
+
+			$this->load->library('upload', $config);
+
+			if ( ! $this->upload->do_upload('import'))
+			{
+				$errors = $this->upload->display_errors();
+				$this->load->view('admin/import', array('errors' => $errors));
+			}
+			else
+			{
+				//verify the headers
+				$file_data = $this->upload->data();
+				$this->session->set_userdata('import_filename', $file_data['file_name']);
+				$f = file_get_contents('uploads/'.$file_data['file_name']);
+				$this->load->library('parsecsv', NULL, 'csv');
+				$this->csv->delimiter = ';';
+				$this->csv->input_encoding = "UTF-8";
+				$this->csv->parse($f);
+				
+				$csv_headers = $this->csv->titles;
+				$sample_data = array_slice($this->csv->data, 0, 5);
+				$accepted_headers = array(
+						'movie_name' => 'Filmtitel',
+						'movie_showings[0]' => 'Vertoonmoment 1',
+						'movie_showings[1]' => 'Vertoonmoment 2',
+						'movie_showings[2]' => 'Vertoonmoment 3',
+						'movie_can_win' => 'Dingt mee voor prijs'
+					);
+				
+				$this->load->view('admin/import', array('csv_headers' => $csv_headers, 'sample_data' => $sample_data, 'accepted_headers' => $accepted_headers));
+			}			
+		}
+		else
+		{
+			$this->load->view('admin/import');			
+		}
+
+	} 
 
 	public function purge()
 	{

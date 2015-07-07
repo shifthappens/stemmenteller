@@ -64,62 +64,6 @@ class Rankings extends CI_Controller {
 		$this->load->view('main/top_xml_output', array('top' => $top, 'barometer' => $barometer));
 	}
 
-	//change to public to enable import functionality
-/*
-	private function import()
-	{
-	$f = file_get_contents('/Users/RidderGraniet/Sites/stemmenteller/lijst.csv');
-	$this->load->library('parsecsv', NULL, 'csv');
-	$this->csv->delimiter = ';';
-	$this->csv->input_encoding = "UTF-8";
-	$this->csv->parse($f);
-	//echo "<pre>".print_r($this->csv->data, true)."</pre>";
-	$this->load->model('Movies_model');
-	
-	$movies = array();
-	$showings = array();
-
-	foreach($this->csv->data as $key => $entry)
- 	{
-		//don't do this one if noentry is set
- 		if(trim($entry['noentry']) == 'x')
-			continue;
-
- 		//movie itself
- 		if(strpos($entry['prize'], 'ja') !== FALSE)
- 			$entry['movie_can_win'] = 1;
- 		else
- 			$entry['movie_can_win'] = 0;
-
- 		$movie = array(
- 			'movie_name' => $entry['Titel film'],
- 			'movie_can_win' => $entry['movie_can_win']
- 			);
-
-
- 		if(!empty(trim($entry['Tijd1'])))
- 		{
- 			$date = explode('-', $entry['Datum1']);
- 			$movie['movie_showings'][0]['showing_datetime'] = strtotime($date[2].'-'.$date[1].'-'.$date[0].' '.$entry['Tijd1']);
- 		}
-
- 		if(!empty(trim($entry['tijd2'])))
- 		{
- 			$movie['movie_showings'][1]['showing_datetime'] = strtotime($entry['datum2'].'-14 '.$entry['tijd2']);
- 		}
-
- 		if(!empty(trim($entry['tijd3'])))
- 		{
- 			$movie['movie_showings'][2]['showing_datetime'] = strtotime($entry['datum3'].'-14 '.$entry['tijd3']);
- 		}
-
- 		$this->Movies_model->insert($movie, FALSE);
- 		echo "Inserted '".$movie['movie_name']."' into db. <br />";
- 		//echo "<pre>".print_r($movie, true)."</pre>";
-
- 	}
-} 
-*/
 
 	private function get_top($only_can_win = TRUE, $only_enough_votes = TRUE)
 	{
