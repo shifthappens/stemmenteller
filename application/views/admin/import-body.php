@@ -21,12 +21,12 @@
                 </div>
                 <?php endif; ?>
                 
-                <form action="admin/import/verify" method="post">
+                <form action="admin/verify_import" method="post">
                 
                     <table id="csvverify-table" class="table table-striped">
-                            <?php foreach($csv_headers as $header):?>
+                            <?php foreach($csv_headers as $key => $header):?>
                             <th>
-                            <select name="csvverify-select-<?=strtolower($header)?>">
+                            <select name="csvverify-header[<?=$key?>]">
                                 <option value="NULL"<?=$this->input->post('csvverify-select-'.strtolower($header)) && $this->input->post('csvverify-select-'.strtolower($header)) == 'NULL' ? ' selected="selected"' : '' ?>>--Deze kolom negeren--</option>
                                 <?php foreach($accepted_headers as $accepted_header_name => $accepted_header_label): ?>
                                 <option value="<?=$accepted_header_name?>" <?=$this->input->post('csvverify-select-'.strtolower($header)) && $this->input->post('csvverify-select-'.strtolower($header)) == $accepted_header_name ? ' selected="selected"' : '' ?>><?=$accepted_header_label?></option>
@@ -47,11 +47,14 @@
                                 <td>...</td>
                                 <?php endfor; ?>
                             </tr>
+                            <tr>
+                                <td colspan="2" id="savechanges"><button class="btn btn-danger" type="submit" name="verify-submit" value="1">Bevestig keuzes</button>
+                            </tr>
+
                         </table>
                     </div>
 
-                    <div class="center"><button type="submit" name="submit" value="1">Confirm</button></div>                    
-                    
+                    <div class="center"></div>    
                 </form>
           <?php else: ?>
           <?= form_open_multipart('admin/import') ?>
