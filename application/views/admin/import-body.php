@@ -8,18 +8,29 @@
 
 
           <h1 class="page-header">Film data importeren</small></h1>
-        <?php if($this->input->post('upload_submit')): ?>
-                <?php if(isset($errors)): ?>
-                <div class="bg-warning nice-padding">
-                    <?php if(is_array($errors)):
-                            foreach($error as $message): ?>
-                        <p><?=$message?></p>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                        <p><?=$errors?></p>
-                        <?php endif; ?>
-                </div>
-                <?php endif; ?>
+
+            <?php if(isset($errors)): ?>
+            <div class="bg-warning nice-padding">
+                <?php if(is_array($errors)):
+                        foreach($error as $message): ?>
+                    <p><?=$message?></p>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                    <p><?=$errors?></p>
+                    <?php endif; ?>
+            </div>
+            <?php endif; ?>
+
+          <?php if(isset($imported_movies)): ?>
+          <h4>Totaal aantal films geïmporteerd: <?=count($imported_movies)?></h4>
+            <?php foreach($imported_movies as $imported_movie): ?>
+            <div class="bg-success nice-padding">
+                Film '<?=$imported_movie['movie_name']?>' geïmporteerd 
+                met <strong><?=count($imported_movie['movie_showings'])?></strong> vertoonmomenten
+            </div>
+            <?php endforeach; ?>
+
+        <?php elseif($this->input->post('upload_submit')): ?>
                 
                 <form action="admin/verify_import" method="post">
                 
