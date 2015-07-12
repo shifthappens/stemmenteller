@@ -328,55 +328,108 @@ class Admin extends CI_Controller {
 
 	public function do_import()
 	{
-		get_csv_file();
+		//only use this function when the whole process was followed, from upload to verification
+		if(!$this->session->userdata('import_mapped_headers'))
+			redirect('admin/import');
+
+		get_csv_file(); //helper function, saves it to $this->csv(->data)
 
 		log_message('debug', 'mapped headers: '.print_r($this->session->userdata('import_mapped_headers'), TRUE));
 
-		// //echo "<pre>".print_r($this->csv->data, true)."</pre>";
-		// $this->load->model('Movies_model');
+		$this->load->model('Movies_model');
 		
-		// $movies = array();
-		// $showings = array();
+		$movies = array();
+		$showings = array();
+		$mapped_headers = $this->session->userdata('import_mapped_headers');
 
-		// foreach($this->csv->data as $key => $entry)
-	 // 	{
-		// 	//don't do this one if noentry is set
-	 // 		if(trim($entry['noentry']) == 'x')
-		// 		continue;
+		foreach($this->csv->data as $key => $entry)
+	 	{
+			//don't do this one if no_entry is set
+			if(isset($mapped_headers['no_entry']))
+			{
+		 		if(trim($entry[$mapped_headers['no_entry']]) == 'x')
+					continue;
+			}
 
-	 // 		//movie itself
-	 // 		if(strpos($entry['prize'], 'ja') !== FALSE)
-	 // 			$entry['movie_can_win'] = 1;
-	 // 		else
-	 // 			$entry['movie_can_win'] = 0;
+	 		//movie itself
+	 		if(strpos($entry[$mapped_headers['movie_can_win']], 'ja') !== FALSE)
+	 			$entry['movie_can_win'] = 1;
+	 		else
+	 			$entry['movie_can_win'] = 0;
 
-	 // 		$movie = array(
-	 // 			'movie_name' => $entry['Titel film'],
-	 // 			'movie_can_win' => $entry['movie_can_win']
-	 // 			);
+	 		$movie = array(
+	 			'movie_name' => $entry[$mapped_headers['movie_name']],
+	 			'movie_can_win' => $entry['movie_can_win']
+	 			);
 
+	 		if(isset($mapped_headers['movie_showings_1_date']) && isset($mapped_headers['movie_showings_1_time']))
+	 		{
+		 		if(!empty(trim($entry[$mapped_headers['movie_showings_1_date']])) && !empty(trim($entry[$mapped_headers['movie_showings_1_time']])))
+		 		{
+		 			$date = explode('-', $entry[$mapped_headers['movie_showings_1_date']]);
+		 			if(count($date) === 3)
+		 			{
+			 			$movie['movie_showings'][0]['showing_datetime'] = strtotime($date[2].'-'.$date[1].'-'.$date[0].' '.$entry[$mapped_headers['movie_showings_1_time']]);
+			 		}
+			 		elseif(count($date) === 2)
+			 		{
+			 			$movie['movie_showings'][0]['showing_datetime'] = strtotime(date('Y').'-'.$date[1].'-'.$date[0].' '.$entry[$mapped_headers['movie_showings_1_time']]);			 			
+			 			$errors[] = "Waarschuwing: Film '".$movie['movie_name']."' heeft een ongeldig 1e vertoonmoment. Jaar ontbrak in datum formaat, huidig jaar aangenomen (".date('Y').").";
+			 		}
+			 		else
+			 		{
+			 			$errors[] = "Waarschuwing: Film '".$movie['movie_name']."' heeft een ongeldig 1e vertoonmoment. Datum is niet correct geformatteerd (dd-mm-yyyy). Dit vertoonmoment is overgeslagen.";
+			 		}
+		 		}
+	 		}
 
-	 // 		if(!empty(trim($entry['Tijd1'])))
-	 // 		{
-	 // 			$date = explode('-', $entry['Datum1']);
-	 // 			$movie['movie_showings'][0]['showing_datetime'] = strtotime($date[2].'-'.$date[1].'-'.$date[0].' '.$entry['Tijd1']);
-	 // 		}
+	 		if(isset($mapped_headers['movie_showings_2_date']) && isset($mapped_headers['movie_showings_2_time']))
+	 		{
+		 		if(!empty(trim($entry[$mapped_headers['movie_showings_2_date']])) && !empty(trim($entry[$mapped_headers['movie_showings_2_time']])))
+		 		{
+		 			$date = explode('-', $entry[$mapped_headers['movie_showings_2_date']]);
+		 			if(count($date) === 3)
+		 			{
+			 			$movie['movie_showings'][1]['showing_datetime'] = strtotime($date[2].'-'.$date[1].'-'.$date[0].' '.$entry[$mapped_headers['movie_showings_2_time']]);
+			 		}
+			 		elseif(count($date) === 2)
+			 		{
+			 			$movie['movie_showings'][1]['showing_datetime'] = strtotime(date('Y').'-'.$date[1].'-'.$date[0].' '.$entry[$mapped_headers['movie_showings_2_time']]);			 			
+			 			$errors[] = "Waarschuwing: Film '".$movie['movie_name']."' heeft een ongeldig 2e vertoonmoment. Jaar ontbrak in datum formaat, huidig jaar aangenomen (".date('Y').").";
+			 		}
+			 		else
+			 		{
+			 			$errors[] = "Waarschuwing: Film '".$movie['movie_name']."' heeft een ongeldig 2e vertoonmoment. Datum is niet correct geformatteerd (dd-mm-yyyy). Dit vertoonmoment is overgeslagen.";
+			 		}
+		 		}	 			
+	 		}
+	 		
+	 		if(isset($mapped_headers['movie_showings_3_date']) && isset($mapped_headers['movie_showings_3_time']))
+	 		{
+		 		if(!empty(trim($entry[$mapped_headers['movie_showings_3_date']])) && !empty(trim($entry[$mapped_headers['movie_showings_3_time']])))
+		 		{
+		 			$date = explode('-', $entry[$mapped_headers['movie_showings_3_date']]);
+		 			if(count($date) === 3)
+		 			{
+			 			$movie['movie_showings'][2]['showing_datetime'] = strtotime($date[2].'-'.$date[1].'-'.$date[0].' '.$entry[$mapped_headers['movie_showings_3_time']]);
+			 		}
+			 		elseif(count($date) === 2)
+			 		{
+			 			$movie['movie_showings'][2]['showing_datetime'] = strtotime(date('Y').'-'.$date[1].'-'.$date[0].' '.$entry[$mapped_headers['movie_showings_3_time']]);			 			
+			 			$errors[] = "Waarschuwing: Film '".$movie['movie_name']."' heeft een ongeldig 3e vertoonmoment. Jaar ontbrak in datum formaat, huidig jaar aangenomen (".date('Y').").";
+			 		}
+			 		else
+			 		{
+			 			$errors[] = "Waarschuwing: Film '".$movie['movie_name']."' heeft een ongeldig 3e vertoonmoment. Datum is niet correct geformatteerd (dd-mm-yyyy). Dit vertoonmoment is overgeslagen.";
+			 		}
+		 		}	 			
+	 		}
 
-	 // 		if(!empty(trim($entry['tijd2'])))
-	 // 		{
-	 // 			$movie['movie_showings'][1]['showing_datetime'] = strtotime($entry['datum2'].'-14 '.$entry['tijd2']);
-	 // 		}
+	 		//$this->Movies_model->insert($movie, FALSE);
+	 		$imported_movie_info[] = $movie;
+	 	}
 
-	 // 		if(!empty(trim($entry['tijd3'])))
-	 // 		{
-	 // 			$movie['movie_showings'][2]['showing_datetime'] = strtotime($entry['datum3'].'-14 '.$entry['tijd3']);
-	 // 		}
-
-	 // 		$this->Movies_model->insert($movie, FALSE);
-	 // 		echo "Inserted '".$movie['movie_name']."' into db. <br />";
-	 // 		//echo "<pre>".print_r($movie, true)."</pre>";
-
-	 // 	}
+	 	$this->load->view('admin/import', array('imported_movies' => $imported_movie_info));
 	}
 
 	public function verify_import()
@@ -409,7 +462,7 @@ class Admin extends CI_Controller {
 			|| !array_key_exists('movie_showings_1_time', $mapped_headers)
 			|| !array_key_exists('movie_can_win', $mapped_headers))
 		{
-			$this->load->view('admin/import', array('errors' => 'Kon het CSV bestand niet inladen want een van de vereiste kolommen ontbrak. <br /><pre>'.print_r($mapped_headers, true).'</pre>'));
+			$this->load->view('admin/import', array('errors' => 'Kon het CSV bestand niet inladen want een van de vereiste kolommen ontbrak. Minimaal de film naam, 1 vertoonmoment (datum en tijd) en of hij meedingt voor de prijs moeten bekend zijn.'));
 			log_message('debug', 'Kon enkele kolommen niet vinden in de nieuwe headers');
 		}
 		else
