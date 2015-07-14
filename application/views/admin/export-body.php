@@ -8,7 +8,7 @@
 
 
           <h1 class="page-header">Film data exporteren <small><?=$movies->num_rows()?> films in totaal</small></h1>
-
+          <a class="btn btn-lg btn-danger" href="admin/export/csv">Exporteren als CSV</a>
           <h2>Publieksprijs</h2>
             <table id="movies" class="table table-striped sortr">
                 <thead>

@@ -323,7 +323,17 @@ class Admin extends CI_Controller {
 		$this->load->model('Movies_model');
 		$this->load->model('Votings_model');
 		$movies = $this->Movies_model->get();
-		$this->load->view('admin/export', array('movies' => $movies));
+		$this->load->helper('download');
+
+		if($this->uri->segment(3) == 'csv')
+		{
+			$csv = $this->load->view('admin/export-csv', array('movies' => $movies), TRUE);
+			force_download('nff-export.csv', $csv);
+		}
+		else
+		{
+			$this->load->view('admin/export', array('movies' => $movies));			
+		}
 	}
 
 	public function do_import()
@@ -425,7 +435,7 @@ class Admin extends CI_Controller {
 		 		}	 			
 	 		}
 
-	 		//$this->Movies_model->insert($movie, FALSE);
+	 		$this->Movies_model->insert($movie, FALSE);
 	 		$imported_movie_info[] = $movie;
 	 	}
 
