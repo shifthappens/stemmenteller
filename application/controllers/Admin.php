@@ -382,7 +382,7 @@ class Admin extends CI_Controller {
 
 	 		if(isset($mapped_headers['movie_showings_1_date']) && isset($mapped_headers['movie_showings_1_time']))
 	 		{
-		 		if(!empty(trim($entry[$mapped_headers['movie_showings_1_date']])) && !empty(trim($entry[$mapped_headers['movie_showings_1_time']])))
+		 		if(trim($entry[$mapped_headers['movie_showings_1_date']]) != '' && trim($entry[$mapped_headers['movie_showings_1_time']]) != '')
 		 		{
 		 			$date = explode('-', $entry[$mapped_headers['movie_showings_1_date']]);
 		 			if(count($date) === 3)
@@ -403,7 +403,7 @@ class Admin extends CI_Controller {
 
 	 		if(isset($mapped_headers['movie_showings_2_date']) && isset($mapped_headers['movie_showings_2_time']))
 	 		{
-		 		if(!empty(trim($entry[$mapped_headers['movie_showings_2_date']])) && !empty(trim($entry[$mapped_headers['movie_showings_2_time']])))
+		 		if(trim($entry[$mapped_headers['movie_showings_2_date']]) != '' && trim($entry[$mapped_headers['movie_showings_2_time']]) != '')
 		 		{
 		 			$date = explode('-', $entry[$mapped_headers['movie_showings_2_date']]);
 		 			if(count($date) === 3)
@@ -424,7 +424,7 @@ class Admin extends CI_Controller {
 	 		
 	 		if(isset($mapped_headers['movie_showings_3_date']) && isset($mapped_headers['movie_showings_3_time']))
 	 		{
-		 		if(!empty(trim($entry[$mapped_headers['movie_showings_3_date']])) && !empty(trim($entry[$mapped_headers['movie_showings_3_time']])))
+		 		if(trim($entry[$mapped_headers['movie_showings_3_date']]) != '' && trim($entry[$mapped_headers['movie_showings_3_time']]) != '')
 		 		{
 		 			$date = explode('-', $entry[$mapped_headers['movie_showings_3_date']]);
 		 			if(count($date) === 3)
