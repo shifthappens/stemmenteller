@@ -8,7 +8,7 @@
 
 
           <h1 class="page-header">Film data exporteren <small><?=$movies->num_rows()?> films in totaal</small></h1>
-          <a class="btn btn-lg btn-danger" href="admin/export/csv">Exporteren als CSV</a>
+          <a class="btn btn-lg btn-danger" href="admin/export/csv">Publieksprijs exporteren als CSV</a>
           <h2>Publieksprijs</h2>
             <table id="movies" class="table table-striped sortr">
                 <thead>
@@ -20,18 +20,19 @@
 <?php
 foreach($movies->result() as $movie): ?>
 <?php $gradeinfo = $this->Votings_model->calculate_grade($movie->movie_id); ?>
-<?php if($gradeinfo['totalvotes'] >= 100 && $movie->movie_can_win == "1"): ?>
+<?php if($movie->movie_can_win == "1"): ?>
                     <tr>
                         <td class="movie-name"><?=$movie->movie_name?></td>
                          <td class="movie-grade"><?=number_format((double)$gradeinfo['grade'], 2)?></td>
                          <td class="movie-totalvotes"><?=$gradeinfo['totalvotes']?></td>
-                         <td class="movie-can-win" style="display: none;"><?=$gradeinfo['totalvotes'] < $this->config->item('voting_minimum') ? '*' : ''?></td>
+                         <td class="movie-can-win"><?=$gradeinfo['totalvotes'] <= $this->config->item('voting_minimum') ? '*' : ''?></td>
                     </tr>
 <?php endif; ?>
 <?php endforeach; ?>
                 </tbody>
             </table>
-          <h2>Barometer</h2>
+           <a class="btn btn-lg btn-danger" href="admin/export/csv">Barometer exporteren als CSV</a>
+         <h2>Barometer</h2>
             <table id="movies" class="table table-striped sortr">
                 <thead>
                     <th class="sortr-sortable">Film titel</th>
@@ -39,13 +40,15 @@ foreach($movies->result() as $movie): ?>
                      <th class="sortr-sortable totalvotes-th">Aantal stemmen</th>
                 <tbody>
 <?php
-foreach($movies->result() as $movie): ?>
+foreach($movies->result() as $movie):
+    if($movie->movie_can_win == "0"): ?>
 <?php $gradeinfo = $this->Votings_model->calculate_grade($movie->movie_id); ?>
                     <tr>
                         <td class="movie-name"><?=$movie->movie_name?></td>
                          <td class="movie-grade"><?=number_format((double)$gradeinfo['grade'], 2)?></td>
                          <td class="movie-totalvotes"><?=$gradeinfo['totalvotes']?></td>
                     </tr>
+<?php endif; ?>
 <?php endforeach; ?>
                 </tbody>
             </table>          

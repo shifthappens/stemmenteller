@@ -31,7 +31,16 @@
             <?php endforeach; ?>
 
         <?php elseif($this->input->post('upload_submit')): ?>
-                
+                <div class="bg-warning nice-padding">
+                    <p>Selecteer de kolommen die corresponderen met de data die de import tool snapt.
+                        Klik op een drop-down menu om een kolom aan te merken als de juiste data voor
+                         dat stukje informatie.</p>
+                    <p>Staat je kolom er niet bij? Dan is het CSV bestand misschien niet goed geformatteerd
+                        en heeft de tool de kolom niet herkend. Controleer je Excel bronbestand en exporteer opnieuw
+                        naar CSV en probeer het opnieuw.</p>
+                    <p>Hieronder zie je de eerste 5 rijen in het CSV bestand zodat je kan controleren of het goed herkend is.
+                        Uiteraard gaan straks alle herkende rijen geïmporteerd worden.</p>
+                </div>
                 <form action="admin/verify_import" method="post">
                 
                     <table id="csvverify-table" class="table table-striped">
@@ -68,6 +77,18 @@
                     <div class="center"></div>    
                 </form>
           <?php else: ?>
+          <div class="bg-warning nice-padding">
+            <p>Met deze simpele tool kan je film informatie gemakkelijk vanuit Excel in de database zetten.
+                De tool kan heel krachtig zijn, als je de volgende regels aanhoudt:</p>
+                <ul>
+                    <li>Exporteer de vertoningslijst als CSV (comma separated values) bestand</li>
+                    <li>Zorg ervoor dat er minimaal kolommen zijn voor "Film titel", "Datum Vertoonmoment 1", "Tijd vertoonmoment 1", "Publieksprijs ja/nee"</li>
+                    <li>Zorg ervoor dat datum en tijd aparte kolommen zijn, voor alle vertoonmomenten</li>
+                    <li>Zorg ervoor dat de datum als dd-mm-jjjj wordt aangeleverd en de tijd als uu:mm</li>
+                    <li>Er kunnen maximaal 3 vertoonmomenten aangemaakt worden per film</li>
+                </ul>
+            <p>Mocht de import niet goed verlopen zijn, dan kun je via <a href="admin/settings">Instellingen</a> weer de database leeggooien en het opnieuw proberen.</p>
+          </div>
           <?= form_open_multipart('admin/import') ?>
             <table id="import" class="table table-striped">
                 <tbody>

@@ -39,7 +39,8 @@ $this->load->view('admin/loginbar');
                             <td class="movie-name-value"><input type="text" name="movie_name" placeholder="Voer een titel in..." value="<?= $editing ? $movie->movie_name : set_value('movie_name')?>" /></td>
                         </tr>
                         <tr>
-                            <td class="movie-can-win">Dingt mee voor prijs?</td>
+                            <td class="movie-can-win">Dingt mee voor Publieksprijs?<br />
+                                <small>Indien een film niet meedingt, wordt het een Barometer film</small></td>
                             <td class="movie-can-win-value">
                                 <span class="radio-choice"><input type="radio" <?= $editing && $movie->movie_can_win ? 'checked' : set_radio('movie_can_win', '1', TRUE)?> name="movie_can_win" value="1" /> Ja</span>
                                 <span class="radio-choice"><input type="radio" <?= $editing && !$movie->movie_can_win ? 'checked' : set_radio('movie_can_win', '0')?> name="movie_can_win" value="0" /> Nee</span>
@@ -49,6 +50,7 @@ $this->load->view('admin/loginbar');
                         <tr>
                             <td class="movie-showing">Vertoonmoment <?=$i+1?></td>
                             <td class="movie-showing-value">
+                                <!-- <?= $showing[$i]['showing_datetime'] . ' = ' . date('Y-m-d H:i', $showing[$i]['showing_datetime']) ?> -->
                                 <select name="movie_showings[<?=$i?>][date]">
                                     <option value="NULL">Vertoonmoment <?=$i+1?></option>
                                     <option value="2014-11-05" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2014-11-05') === true ? 'selected' : set_select('movie_showings[$i][date]', '2014-11-05')?>>wo 5 nov</option>

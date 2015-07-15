@@ -67,7 +67,7 @@
                         </tr>
                         <tr>
                             <td class="setting-name">Achtergrondafbeelding<br />
-                                <small>Wijzig hier de achtergrondafbeelding die je kan zien op de voorpagina</small></td>
+                                <small>Wijzig hier de achtergrondafbeelding die je kan zien op de voorpagina. <br /> De afbeelding zal worden opgerekt om het scherm volledig te vullen.</small></td>
                             <td class="setting-value">
                                 <input type="file" name="background_image" value="" />
                                 (<a href="<?=site_url().'uploads/'.$this->config->item('background_image_url')?>" target="_blank">Huidige achtergrondafbeelding</a>)
@@ -75,7 +75,8 @@
                         </tr>
                         <tr>
                             <td class="setting-name">Aangepaste tekst op voorpagina<br />
-                                <small>Tekst die i.p.v. de ranglijsten wordt getoond, indien ingevuld. Laat leeg om te negeren.</small>
+                                <small>Tekst die i.p.v. de ranglijsten wordt getoond, indien ingevuld. Laat leeg om te negeren. <br/>
+                                    HTML opmaak beperkt toegestaan.</small>
                             </td>
                             <td class="setting-value">
                                 <textarea name="settings[custom_text]" id="custom-text" cols="50" rows="10"><?= $repop ? $this->input->post('settings[custom_text]') : $this->config->item('custom_text')?></textarea>
