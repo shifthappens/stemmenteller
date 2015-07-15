@@ -613,6 +613,10 @@ function security_check()
 
 	if(!$ci->session->userdata('loggedin'))
 	redirect('admin');
+
+	//user_level 1 = manager. May only manage votes and nothing else
+	if($ci->session->userdata('user_level') == '1' && $ci->uri->segment(2) != 'votes' && $ci->uri->segment(2) != '')
+		redirect('admin/votes');
 }
 
 function get_csv_file()
