@@ -36,16 +36,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Rankings extends CI_Controller {
 
-	public function index()
+	public function __construct()
 	{
+		parent::__construct();
+
 		$this->load->model('Settings_model');
-		$this->Settings_model->load_settings();
+		$this->Settings_model->load_settings();		
 
 		$this->load->helper('nff');
 		check_time_based_actions();
-		
-		$top = $this->get_top(TRUE);
-		$barometer = $this->get_top(FALSE, FALSE);
+	}
+
+	public function index()
+	{		
+		$top = $this->get_top(TRUE, FALSE, FALSE);
+		$barometer = $this->get_top(FALSE, FALSE, TRUE);
 
 		$this->load->view('main/index', array('top' => $top, 'barometer' => $barometer));
 
@@ -59,25 +64,25 @@ class Rankings extends CI_Controller {
 	public function xml()
 	{
 		$this->output->set_header('Content-type: text/xml');
-		$top = $this->get_top(TRUE);
-		$barometer = $this->get_top(FALSE);
+		$top = $this->get_top(TRUE, FALSE, FALSE);
+		$barometer = $this->get_top(FALSE, FALSE, TRUE);
 		$this->load->view('main/top_xml_output', array('top' => $top, 'barometer' => $barometer));
 	}
 
 
-	private function get_top($only_can_win = TRUE, $only_enough_votes = TRUE)
+	private function get_top($only_can_win = TRUE, $only_enough_votes = TRUE, $only_barometer = FALSE)
 	{
 		$grades = array();
 		$this->load->model('Movies_model');
 		$this->load->model('Votings_model');
-		$all_movies = $this->Movies_model->get(FALSE, $only_can_win);
+		$all_movies = $this->Movies_model->get(FALSE, $only_can_win, $only_barometer);
 		$i = 0;
 
 		foreach($all_movies->result() as $movie)
 		{
 			$gradeinfo = $this->Votings_model->calculate_grade($movie->movie_id);
 
-			if($gradeinfo['totalvotes'] < $this->config->item('voting_minimum') && $only_enough_votes === TRUE)
+			if($gradeinfo['totalvotes'] <= $this->config->item('voting_minimum') && $only_enough_votes === TRUE)
 				continue; //only keep those with the set amount of minimum votes
 
 			$grades[$i]['grade'] = $gradeinfo['grade'];

@@ -322,16 +322,24 @@ class Admin extends CI_Controller {
 
 		$this->load->model('Movies_model');
 		$this->load->model('Votings_model');
-		$movies = $this->Movies_model->get();
 		$this->load->helper('download');
 
 		if($this->uri->segment(3) == 'csv')
 		{
+			if($this->uri->segment(4) == 'publieksprijs')
+			{
+				$movies = $this->Movies_model->get(FALSE, TRUE); //only can win
+			}
+			elseif($this->uri->segment(4) == 'barometer')
+			{
+				$movies = $this->Movies_model->get(FALSE, FALSE, TRUE); //only barometer
+			}
 			$csv = $this->load->view('admin/export-csv', array('movies' => $movies), TRUE);
 			force_download('nff-export.csv', $csv);
 		}
 		else
 		{
+			$movies = $this->Movies_model->get(); //all
 			$this->load->view('admin/export', array('movies' => $movies));			
 		}
 	}

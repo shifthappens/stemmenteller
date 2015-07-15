@@ -41,7 +41,7 @@ class Movies_model extends CI_Model {
         $this->load->database();
     }
 
-    public function get($id = FALSE, $only_can_win = FALSE)
+    public function get($id = FALSE, $only_can_win = FALSE, $only_barometer = FALSE)
     {
         $this->db->select('*');
         $this->db->order_by('movie_name', 'asc');
@@ -51,6 +51,9 @@ class Movies_model extends CI_Model {
         
         if($only_can_win === TRUE)
             $this->db->where('movie_can_win', '1');
+
+        if($only_barometer === TRUE)
+            $this->db->where('movie_can_win', '0');
 
         return $this->db->get('movies');
     }
