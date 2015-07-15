@@ -7,8 +7,6 @@
                     <name><?php echo $movie['grade'] == 'Onbekend' ? 'Nog niet bekend' : $movie['movie_name'] ?></name>
                     <grade><?php echo $movie['grade'] == 'Onbekend' ? '-' : number_format($movie['grade'], 1) ?></grade>
                     <votesMinimumReached><?= $movie['totalvotes'] <= $this->config->item('voting_minimum') && $movie['grade'] != "Onbekend" ? '1' : '0'?></votesMinimumReached>
-                    <totalVotes><?=$movie['totalvotes']?>, <?=$this->config->item('voting_minimum')?></totalVotes>
-
                 </movie>
         <?php endforeach; ?>
         </movies>
