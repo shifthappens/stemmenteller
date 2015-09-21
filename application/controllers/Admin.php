@@ -365,12 +365,12 @@ class Admin extends CI_Controller {
 			//don't do this one if no_entry is set
 			if(isset($mapped_headers['no_entry']))
 			{
-		 		if(trim($entry[$mapped_headers['no_entry']]) == 'x')
+		 		if(trim($entry[$mapped_headers['no_entry']]) !== '')
 					continue;
 			}
 
 	 		//movie itself
-	 		if(strpos($entry[$mapped_headers['movie_can_win']], 'ja') !== FALSE)
+	 		if(trim($entry[$mapped_headers['movie_can_win']]) !== '')
 	 			$entry['movie_can_win'] = 1;
 	 		else
 	 			$entry['movie_can_win'] = 0;
