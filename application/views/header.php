@@ -24,4 +24,4 @@
             }        
         </style>
     </head>
-    <body class="<?=$this->uri->segment(1, 'rankings')?>">
+    <body class="<?=$this->uri->segment(1, 'rankings').' '.$this->uri->segment(2, 'index')?>">
