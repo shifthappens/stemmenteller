@@ -83,7 +83,9 @@
                 <ul>
                     <li>Exporteer de vertoningslijst als CSV (comma separated values) bestand</li>
                     <li>Zorg ervoor dat er minimaal kolommen zijn voor "Film titel", "Datum Vertoonmoment 1", "Tijd vertoonmoment 1", "Publieksprijs ja/nee"</li>
+                    <li>Voor de publieksprijs en wel/niet importeren kolommen geldt: een lege waarde = nee en iets anders = ja. Het script kijkt niet naar "ja"/"nee", "x"/"-" o.i.d.</li>
                     <li>Zorg ervoor dat datum en tijd aparte kolommen zijn, voor alle vertoonmomenten</li>
+                    <li>Je kan films aanmerken als "niet importeren graag". Als er in die kolom iets staat dan wordt de film bij import overgeslagen. Wordt die kolom niet gedefinieerd in de volgende stap of is de inhoud leeg dan wordt de film gewoon geïmporteerd.</li>
                     <li>Zorg ervoor dat de datum als dd-mm-jjjj wordt aangeleverd en de tijd als uu:mm</li>
                     <li>Er kunnen maximaal 3 vertoonmomenten aangemaakt worden per film</li>
                 </ul>
