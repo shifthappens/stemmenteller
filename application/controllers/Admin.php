@@ -370,7 +370,7 @@ class Admin extends CI_Controller {
 			}
 
 	 		//movie itself
-	 		if(trim($entry[$mapped_headers['movie_can_win']]) !== '')
+	 		if(trim($entry[$mapped_headers['movie_can_win']]) == 'ja' || trim($entry[$mapped_headers['movie_can_win']]) == 'x')
 	 			$entry['movie_can_win'] = 1;
 	 		else
 	 			$entry['movie_can_win'] = 0;
