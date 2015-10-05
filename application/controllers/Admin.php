@@ -353,6 +353,7 @@ class Admin extends CI_Controller {
 		get_csv_file(); //helper function, saves it to $this->csv(->data)
 
 		log_message('debug', 'mapped headers: '.print_r($this->session->userdata('import_mapped_headers'), TRUE));
+		log_message('debug', 'number of movies to import: '.count($this->csv->data));
 
 		$this->load->model('Movies_model');
 		
@@ -628,6 +629,7 @@ function get_csv_file()
 	}
 
 	$f = file_get_contents('uploads/'.$ci->session->userdata('import_filename'));
+	$f .= "\n"; //adding a newline to the file to make sure parsecsv lib also imports the last line in the file (bug)
 	$ci->load->library('parsecsv', NULL, 'csv');
 	$ci->csv->delimiter = ';';
 	$ci->csv->input_encoding = "UTF-8";
