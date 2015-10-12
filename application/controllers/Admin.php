@@ -531,7 +531,10 @@ class Admin extends CI_Controller {
 						'no_entry' => 'Film NIET invoeren'
 					);
 				
-				$this->load->view('admin/import', array('csv_headers' => $csv_headers, 'sample_data' => $sample_data, 'accepted_headers' => $accepted_headers));
+				$this->load->view('admin/import', array('csv_headers' => $csv_headers,
+					'sample_data' => $sample_data, 
+					'accepted_headers' => $accepted_headers,
+					'num_rows' => count($this->csv->data)));
 			}			
 		}
 		else
