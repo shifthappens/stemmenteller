@@ -53,11 +53,11 @@ $this->load->view('admin/loginbar');
                                 <!-- <?= $showing[$i]['showing_datetime'] . ' = ' . date('Y-m-d H:i', $showing[$i]['showing_datetime']) ?> -->
                                 <select name="movie_showings[<?=$i?>][date]">
                                     <option value="NULL">Vertoonmoment <?=$i+1?></option>
-                                    <option value="2014-11-11" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2014-11-11') === true ? 'selected' : set_select('movie_showings[$i][date]', '2014-11-11')?>>wo 11 nov</option>
-                                    <option value="2014-11-12" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2014-11-12') === true ? 'selected' : set_select('movie_showings[$i][date]', '2014-11-12')?>>do 12 nov</option>
-                                    <option value="2014-11-13" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2014-11-13') === true ? 'selected' : set_select('movie_showings[$i][date]', '2014-11-13')?>>vr 13 nov</option>
-                                    <option value="2014-11-14" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2014-11-14') === true ? 'selected' : set_select('movie_showings[$i][date]', '2014-11-14')?>>za 14 nov</option>
-                                    <option value="2014-11-15" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2014-11-15') === true ? 'selected' : set_select('movie_showings[$i][date]', '2014-11-15')?>>zo 15 nov</option>
+                                    <option value="2015-11-11" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2015-11-11') === true ? 'selected' : set_select('movie_showings[$i][date]', '2015-11-11')?>>wo 11 nov</option>
+                                    <option value="2015-11-12" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2015-11-12') === true ? 'selected' : set_select('movie_showings[$i][date]', '2015-11-12')?>>do 12 nov</option>
+                                    <option value="2015-11-13" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2015-11-13') === true ? 'selected' : set_select('movie_showings[$i][date]', '2015-11-13')?>>vr 13 nov</option>
+                                    <option value="2015-11-14" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2015-11-14') === true ? 'selected' : set_select('movie_showings[$i][date]', '2015-11-14')?>>za 14 nov</option>
+                                    <option value="2015-11-15" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2015-11-15') === true ? 'selected' : set_select('movie_showings[$i][date]', '2015-11-15')?>>zo 15 nov</option>
                                 </select>
                                 <input name="movie_showings[<?=$i?>][hour]" class="clock-digits" value="<?= $editing && isset($showing[$i]) ? date('H', $showing[$i]['showing_datetime']) : set_value('movie_showings[$i][hour]') ?>" />
                                 <span>:</span>

@@ -40,13 +40,14 @@
   font-style: normal;
 }
 
-body.rankings h1, body.rankings h3 { font-size: 58px; color: #000; font-family: 'dtl_nobelt_bold', "Helvetica Neue", Helvetica, Arial; text-transform: uppercase; }
+body.rankings h1, body.rankings h3 { font-size: 52px; color: #000; font-family: 'dtl_nobelt_bold', "Helvetica Neue", Helvetica, Arial; text-transform: uppercase; }
 body.rankings h3 { font-size: 24px; color: #333 }
 body.rankings li { 
-  font-size: 46px; 
+  font-size: 42px; 
   color: #000; 
   font-weight: 800; 
   font-family: 'ITCFranklinGothicStd-MdCd', "Helvetica Neue", Helvetica, Arial;
+  line-height: 1.10em;
 }
 
 body.rankings ol {
