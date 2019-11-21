@@ -50,10 +50,17 @@ class Rankings extends CI_Controller {
 	public function index()
 	{		
 		$top = $this->get_top(TRUE, FALSE, FALSE);
+		//$barometer = $this->get_top(FALSE, FALSE, TRUE); //removed from front page and on separate page as requested september 2017
+
+		$this->load->view('main/index', array('top' => $top));
+
+	}
+	
+	public function barometer()
+	{
 		$barometer = $this->get_top(FALSE, FALSE, TRUE);
 
-		$this->load->view('main/index', array('top' => $top, 'barometer' => $barometer));
-
+		$this->load->view('main/index', array('barometer' => $barometer));		
 	}
 
 	public function makepwd()
