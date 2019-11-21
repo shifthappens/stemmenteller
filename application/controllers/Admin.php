@@ -444,6 +444,48 @@ class Admin extends CI_Controller {
 		 		}	 			
 	 		}
 
+	 		if(isset($mapped_headers['movie_showings_4_date']) && isset($mapped_headers['movie_showings_4_time']))
+	 		{
+		 		if(trim($entry[$mapped_headers['movie_showings_4_date']]) != '' && trim($entry[$mapped_headers['movie_showings_4_time']]) != '')
+		 		{
+		 			$date = explode('-', $entry[$mapped_headers['movie_showings_4_date']]);
+		 			if(count($date) === 3)
+		 			{
+			 			$movie['movie_showings'][3]['showing_datetime'] = strtotime($date[2].'-'.$date[1].'-'.$date[0].' '.$entry[$mapped_headers['movie_showings_4_time']]);
+			 		}
+			 		elseif(count($date) === 2)
+			 		{
+			 			$movie['movie_showings'][3]['showing_datetime'] = strtotime(date('Y').'-'.$date[1].'-'.$date[0].' '.$entry[$mapped_headers['movie_showings_4_time']]);			 			
+			 			$errors[] = "Waarschuwing: Film '".$movie['movie_name']."' heeft een ongeldig 4e vertoonmoment. Jaar ontbrak in datum formaat, huidig jaar aangenomen (".date('Y').").";
+			 		}
+			 		else
+			 		{
+			 			$errors[] = "Waarschuwing: Film '".$movie['movie_name']."' heeft een ongeldig 4e vertoonmoment. Datum is niet correct geformatteerd (dd-mm-yyyy). Dit vertoonmoment is overgeslagen.";
+			 		}
+		 		}	 			
+	 		}
+
+	 		if(isset($mapped_headers['movie_showings_5_date']) && isset($mapped_headers['movie_showings_5_time']))
+	 		{
+		 		if(trim($entry[$mapped_headers['movie_showings_5_date']]) != '' && trim($entry[$mapped_headers['movie_showings_5_time']]) != '')
+		 		{
+		 			$date = explode('-', $entry[$mapped_headers['movie_showings_5_date']]);
+		 			if(count($date) === 3)
+		 			{
+			 			$movie['movie_showings'][4]['showing_datetime'] = strtotime($date[2].'-'.$date[1].'-'.$date[0].' '.$entry[$mapped_headers['movie_showings_5_time']]);
+			 		}
+			 		elseif(count($date) === 2)
+			 		{
+			 			$movie['movie_showings'][4]['showing_datetime'] = strtotime(date('Y').'-'.$date[1].'-'.$date[0].' '.$entry[$mapped_headers['movie_showings_5_time']]);			 			
+			 			$errors[] = "Waarschuwing: Film '".$movie['movie_name']."' heeft een ongeldig 5e vertoonmoment. Jaar ontbrak in datum formaat, huidig jaar aangenomen (".date('Y').").";
+			 		}
+			 		else
+			 		{
+			 			$errors[] = "Waarschuwing: Film '".$movie['movie_name']."' heeft een ongeldig 5e vertoonmoment. Datum is niet correct geformatteerd (dd-mm-yyyy). Dit vertoonmoment is overgeslagen.";
+			 		}
+		 		}	 			
+	 		}
+
 	 		$this->Movies_model->insert($movie, FALSE);
 	 		$imported_movie_info[] = $movie;
 	 	}
@@ -508,7 +550,7 @@ class Admin extends CI_Controller {
 			if ( ! $this->upload->do_upload('import'))
 			{
 				$errors = $this->upload->display_errors();
-				$this->load->view('admin/import', array('errors' => $errors));
+				$this->load->view('admin/import', array('errors' => $errors, 'upload_error' => TRUE));
 			}
 			else
 			{
@@ -524,9 +566,13 @@ class Admin extends CI_Controller {
 						'movie_showings_1_date' => 'Vertoonmoment 1 (Datum)',				
 						'movie_showings_2_date' => 'Vertoonmoment 2 (Datum)',
 						'movie_showings_3_date' => 'Vertoonmoment 3 (Datum)',
+						'movie_showings_4_date' => 'Vertoonmoment 4 (Datum)',
+						'movie_showings_5_date' => 'Vertoonmoment 5 (Datum)',
 						'movie_showings_1_time' => 'Vertoonmoment 1 (Tijd)',				
 						'movie_showings_2_time' => 'Vertoonmoment 2 (Tijd)',
 						'movie_showings_3_time' => 'Vertoonmoment 3 (Tijd)',
+						'movie_showings_4_time' => 'Vertoonmoment 4 (Tijd)',
+						'movie_showings_5_time' => 'Vertoonmoment 5 (Tijd)',
 						'movie_can_win' => 'Dingt mee voor prijs',
 						'no_entry' => 'Film NIET invoeren'
 					);
@@ -573,13 +619,6 @@ class Admin extends CI_Controller {
 
 		redirect('admin/settings');
 	}
-
-	// public function dopassword()
-	// {
-	// 	$pwd = password_hash('test', PASSWORD_BCRYPT);
-	// 	echo $pwd;
-	// 	var_dump(password_verify('test', $pwd));
-	// }
 
 	public function logout()
 	{
@@ -630,13 +669,14 @@ function get_csv_file()
 	{
 		return FALSE;
 	}
-
-	$f = file_get_contents('uploads/'.$ci->session->userdata('import_filename'));
-	$f .= "\n"; //adding a newline to the file to make sure parsecsv lib also imports the last line in the file (bug)
+	$uploaded_csv_file_path = 'uploads/'.$ci->session->userdata('import_filename');
+	$csv_data = file_get_contents($uploaded_csv_file_path);
+	$csv_data .= "\n"; //adding a newline to the file to make sure parsecsv lib also imports the last line in the file (bug)
+	$csv_data = file_put_contents($uploaded_csv_file_path, $csv_data);
 	$ci->load->library('parsecsv', NULL, 'csv');
 	$ci->csv->delimiter = ';';
 	$ci->csv->input_encoding = "UTF-8";
-	$ci->csv->parse($f);
+	$ci->csv->parse($uploaded_csv_file_path);
 
 	return TRUE;
 

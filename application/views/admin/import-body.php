@@ -30,7 +30,7 @@
             </div>
             <?php endforeach; ?>
 
-        <?php elseif($this->input->post('upload_submit')): ?>
+        <?php elseif($this->input->post('upload_submit') && !isset($errors["upload_error"])): ?>
                 <div class="bg-warning nice-padding">
                     <p>Selecteer de kolommen die corresponderen met de data die de import tool snapt.
                         Klik op een drop-down menu om een kolom aan te merken als de juiste data voor
@@ -87,7 +87,7 @@
                     <li>Zorg ervoor dat datum en tijd aparte kolommen zijn, voor alle vertoonmomenten</li>
                     <li>Je kan films aanmerken als "niet importeren graag". Als er in die kolom iets staat dan wordt de film bij import overgeslagen. Wordt die kolom niet gedefinieerd in de volgende stap of is de inhoud leeg dan wordt de film gewoon geïmporteerd.</li>
                     <li>Zorg ervoor dat de datum als dd-mm-jjjj wordt aangeleverd en de tijd als uu:mm</li>
-                    <li>Er kunnen maximaal 3 vertoonmomenten aangemaakt worden per film</li>
+                    <li>Er kunnen <strong>maximaal 5</strong> vertoonmomenten aangemaakt worden per film</li>
                 </ul>
             <p>Mocht de import niet goed verlopen zijn, dan kun je via <a href="admin/settings">Instellingen</a> weer de database leeggooien en het opnieuw proberen.</p>
           </div>
