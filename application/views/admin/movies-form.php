@@ -1,5 +1,5 @@
 <?php
-
+setlocale(LC_TIME, 'nl_NL');
 $this->load->view('header');
 $this->load->view('admin/loginbar');
 ?>
@@ -46,18 +46,25 @@ $this->load->view('admin/loginbar');
                                 <span class="radio-choice"><input type="radio" <?= $editing && !$movie->movie_can_win ? 'checked' : set_radio('movie_can_win', '0')?> name="movie_can_win" value="0" /> Nee</span>
                             </td>
                         </tr>
-                        <?php for($i = 0; $i <= 2; $i++): ?>
+                        <?php for($i = 0; $i <= 4; $i++): ?>
                         <tr>
                             <td class="movie-showing">Vertoonmoment <?=$i+1?></td>
                             <td class="movie-showing-value">
                                 <!-- <?= $showing[$i]['showing_datetime'] . ' = ' . date('Y-m-d H:i', $showing[$i]['showing_datetime']) ?> -->
                                 <select name="movie_showings[<?=$i?>][date]">
                                     <option value="NULL">Vertoonmoment <?=$i+1?></option>
-                                    <option value="2015-11-11" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2015-11-11') === true ? 'selected' : set_select('movie_showings[$i][date]', '2015-11-11')?>>wo 11 nov</option>
-                                    <option value="2015-11-12" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2015-11-12') === true ? 'selected' : set_select('movie_showings[$i][date]', '2015-11-12')?>>do 12 nov</option>
-                                    <option value="2015-11-13" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2015-11-13') === true ? 'selected' : set_select('movie_showings[$i][date]', '2015-11-13')?>>vr 13 nov</option>
-                                    <option value="2015-11-14" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2015-11-14') === true ? 'selected' : set_select('movie_showings[$i][date]', '2015-11-14')?>>za 14 nov</option>
-                                    <option value="2015-11-15" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], '2015-11-15') === true ? 'selected' : set_select('movie_showings[$i][date]', '2015-11-15')?>>zo 15 nov</option>
+                        <?php
+	                        $interval = new DateInterval('P1D');
+	                        $start = new DateTime($this->config->item('festival_date_start'));
+	                        $end = new DateTime($this->config->item('festival_date_end'));
+	                        $end = $end->modify("+1 day");
+							$daterange = new DatePeriod($start, $interval, $end);
+
+							foreach($daterange as $date):
+								$dateymd = $date->format('Y-m-d');
+						?>
+                                    <option value="<?=$dateymd?>" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], $dateymd) === true ? 'selected' : set_select('movie_showings[$i][date]', $dateymd)?>><?=$date->format('D j M Y')?></option>
+						<?php endforeach; ?>
                                 </select>
                                 <input name="movie_showings[<?=$i?>][hour]" class="clock-digits" value="<?= $editing && isset($showing[$i]) ? date('H', $showing[$i]['showing_datetime']) : set_value('movie_showings[$i][hour]') ?>" />
                                 <span>:</span>

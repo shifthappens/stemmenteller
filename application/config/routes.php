@@ -89,5 +89,8 @@ $route['default_controller'] = 'rankings';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+//route for showing only the barometer
+$route["barometer"] = "rankings/barometer";
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

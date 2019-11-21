@@ -29,6 +29,15 @@
                                 value="<?= $repop ? $this->input->post('settings[festival_name]') : $this->config->item('festival_name'); ?>" /></td>
                         </tr>
                         <tr>
+                            <td class="setting-name">Festival Begin en Einddata</td>
+                            <td class="setting-value">
+	                            Startdatum: <input type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name="settings[festival_date_start]"
+                                value="<?= $repop ? $this->input->post('settings[festival_date_start]') : $this->config->item('festival_date_start'); ?>" />
+                                <br />
+	                            Einddatum: <input type="date" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" name="settings[festival_date_end]"
+                                value="<?= $repop ? $this->input->post('settings[festival_date_end]') : $this->config->item('festival_date_end'); ?>" /></td>
+                        </tr>
+                        <tr>
                             <td class="setting-name">Tussenstand weergave</td>
                             <td class="setting-value">
                                 <span class="radio-choice">
