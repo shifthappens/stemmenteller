@@ -363,6 +363,8 @@ class Admin extends CI_Controller {
 
 		foreach($this->csv->data as $key => $entry)
 	 	{
+			log_message('debug', 'entry array: '.print_r($entry, TRUE));
+
 			//don't do this one if no_entry is set
 			if(isset($mapped_headers['no_entry']))
 			{
@@ -601,6 +603,7 @@ class Admin extends CI_Controller {
 
 		$this->Movies_model->delete_all();
 		$this->Votings_model->delete_all();
+		$this->Showings_model->delete_all();
 
 		if($this->db->trans_status() === FALSE)
 		{
@@ -671,7 +674,7 @@ function get_csv_file()
 	}
 	$uploaded_csv_file_path = 'uploads/'.$ci->session->userdata('import_filename');
 	$csv_data = file_get_contents($uploaded_csv_file_path);
-	$csv_data .= "\n"; //adding a newline to the file to make sure parsecsv lib also imports the last line in the file (bug)
+	//$csv_data .= "\n"; //adding a newline to the file to make sure parsecsv lib also imports the last line in the file (bug)
 	$csv_data = file_put_contents($uploaded_csv_file_path, $csv_data);
 	$ci->load->library('parsecsv', NULL, 'csv');
 	$ci->csv->delimiter = ';';

@@ -92,4 +92,9 @@ class Showings_model extends CI_Model {
 
         return $combined;
     }
+
+    public function delete_all()
+    {
+        $this->db->empty_table('showings');
+    }
 }

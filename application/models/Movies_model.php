@@ -63,16 +63,19 @@ class Movies_model extends CI_Model {
         $this->db->insert('movies', array('movie_name' => $newmovie['movie_name'], 'movie_can_win' => $newmovie['movie_can_win']));
         $insert_id = $this->db->insert_id();
 
-        foreach($newmovie['movie_showings'] as $showing)
+        if(isset($newmovie['movie_showings']) && is_array($newmovie['movie_showings']))
         {
-            if( (isset($showing['date']) && $showing['date'] != "NULL") || isset($showing['showing_datetime']))
+            foreach($newmovie['movie_showings'] as $showing)
             {
-                $timestamp = $parse_datetime === TRUE ? strtotime($showing['date'].' '.$showing['hour'].':'.$showing['minutes']) : $showing['showing_datetime'];
-                $showing['movie_id'] = $insert_id;
-                $this->db->insert('showings', array('movie_id' => $showing['movie_id'], 'showing_datetime' => $timestamp));
+                if( (isset($showing['date']) && $showing['date'] != "NULL") || isset($showing['showing_datetime']))
+                {
+                    $timestamp = $parse_datetime === TRUE ? strtotime($showing['date'].' '.$showing['hour'].':'.$showing['minutes']) : $showing['showing_datetime'];
+                    $showing['movie_id'] = $insert_id;
+                    $this->db->insert('showings', array('movie_id' => $showing['movie_id'], 'showing_datetime' => $timestamp));
+                }
             }
         }
-
+    
         return TRUE;
     }
 
