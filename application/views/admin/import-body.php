@@ -26,7 +26,7 @@
             <?php foreach($imported_movies as $imported_movie): ?>
             <div class="bg-success nice-padding">
                 Film '<?=$imported_movie['movie_name']?>' geïmporteerd 
-                met <strong><?=count($imported_movie['movie_showings'])?></strong> vertoonmomenten
+                met <strong><?= isset($imported_movie['movie_showings']) ? count($imported_movie['movie_showings']) : "0"; ?></strong> vertoonmomenten
             </div>
             <?php endforeach; ?>
 
