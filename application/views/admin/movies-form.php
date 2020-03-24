@@ -59,11 +59,20 @@ $this->load->view('admin/loginbar');
 	                        $end = new DateTime($this->config->item('festival_date_end'));
 	                        $end = $end->modify("+1 day");
 							$daterange = new DatePeriod($start, $interval, $end);
+                            $datefound = FALSE; //In case a date is imported that is not within the start and end date of the festival, we can check against this
 
 							foreach($daterange as $date):
 								$dateymd = $date->format('Y-m-d');
 						?>
-                                    <option value="<?=$dateymd?>" <?= $editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], $dateymd) === true ? 'selected' : set_select('movie_showings[$i][date]', $dateymd)?>><?=$date->format('D j M Y')?></option>
+                                    <option value="<?=$dateymd?>"<?php if($editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], $dateymd) === true) { echo 'selected'; $datefound = TRUE; } else { set_select('movie_showings[$i][date]', $dateymd) } ?>><?=$date->format('D j M Y')?></option>
+                                    <?php
+                                        if($datefound === FALSE)
+                                        {
+                                    ?>
+                                    <option value="<?=$dateymd?>"><?=$date->format('D j M Y')?> (LET OP: buiten bereik begin/einddatum filmfestival!)</option>
+                                    <?php        
+                                        }
+                                    ?>
 						<?php endforeach; ?>
                                 </select>
                                 <input name="movie_showings[<?=$i?>][hour]" class="clock-digits" value="<?= $editing && isset($showing[$i]) ? date('H', $showing[$i]['showing_datetime']) : set_value('movie_showings[$i][hour]') ?>" />
