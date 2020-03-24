@@ -13,7 +13,7 @@ else:
 <?php
 foreach($response->result() as $row):
 ?>
-<option value="<?=$row->showing_id?>"><?=strftime('%a %e %b %H:%M', $row->showing_datetime)?></option>
+<option value="<?=$row->showing_id?>"><?=strftime('%A %e %B %Y %H:%M', $row->showing_datetime)?></option>
 <?php
 endforeach;
 endif;

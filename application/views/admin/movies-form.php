@@ -36,7 +36,7 @@ $this->load->view('admin/loginbar');
                     <tbody>
                         <tr>
                             <td class="movie-name">Film Titel</td>
-                            <td class="movie-name-value"><input type="text" name="movie_name" placeholder="Voer een titel in..." value="<?= $editing ? $movie->movie_name : set_value('movie_name')?>" /></td>
+                            <td class="movie-name-value"><input type="text" size="80" name="movie_name" placeholder="Voer een titel in..." value="<?= $editing ? $movie->movie_name : set_value('movie_name')?>" /></td>
                         </tr>
                         <tr>
                             <td class="movie-can-win">Dingt mee voor Publieksprijs?<br />
@@ -64,20 +64,22 @@ $this->load->view('admin/loginbar');
 							foreach($daterange as $date):
 								$dateymd = $date->format('Y-m-d');
 						?>
-                                    <option value="<?=$dateymd?>"<?php if($editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], $dateymd) === true) { echo 'selected'; $datefound = TRUE; } else { set_select('movie_showings[$i][date]', $dateymd) } ?>><?=$date->format('D j M Y')?></option>
+                                    <option value="<?=$dateymd?>"<?php if($editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], $dateymd) === true) { echo 'selected'; $datefound = TRUE; } else { set_select('movie_showings[$i][date]', $dateymd); } ?>><?=$date->format('D j M Y')?></option>
+						<?php endforeach; ?>
                                     <?php
-                                        if($datefound === FALSE)
+                                        if($datefound === FALSE && isset($showing[$i]))
                                         {
                                     ?>
-                                    <option value="<?=$dateymd?>"><?=$date->format('D j M Y')?> (LET OP: buiten bereik begin/einddatum filmfestival!)</option>
+                                    <option selected value="<?= date('Y-m-d', $showing[$i]['showing_datetime'])?>"><?=date('D j M Y', $showing[$i]['showing_datetime'])?></option>
                                     <?php        
                                         }
                                     ?>
-						<?php endforeach; ?>
+
                                 </select>
                                 <input name="movie_showings[<?=$i?>][hour]" class="clock-digits" value="<?= $editing && isset($showing[$i]) ? date('H', $showing[$i]['showing_datetime']) : set_value('movie_showings[$i][hour]') ?>" />
                                 <span>:</span>
                                 <input name="movie_showings[<?=$i?>][minutes]" class="clock-digits" value="<?= $editing && isset($showing[$i]) ? date('i', $showing[$i]['showing_datetime']) : set_value('movie_showings[$i][minutes]') ?>" />
+                                <?php if($datefound === FALSE && isset($showing[$i])) { ?><p><strong><small>LET OP: datum buiten bereik begin/einddatum filmfestival!</small></strong></p><?php } ?>
                             </td>
                         </tr>
                         <?php endfor; ?>
