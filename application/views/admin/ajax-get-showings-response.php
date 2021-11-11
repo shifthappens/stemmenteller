@@ -1,5 +1,5 @@
 <?php
-setlocale(LC_TIME, 'nl_NL');
+setlocale(LC_ALL, 'nl_NL');
 
 if($response->num_rows() == 0):
 ?>

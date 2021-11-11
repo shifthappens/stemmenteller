@@ -1,5 +1,5 @@
 <?php
-setlocale(LC_TIME, 'nl_NL');
+setlocale(LC_ALL, 'nl_NL');
 $this->load->view('header');
 $this->load->view('admin/loginbar');
 ?>
@@ -64,13 +64,13 @@ $this->load->view('admin/loginbar');
 							foreach($daterange as $date):
 								$dateymd = $date->format('Y-m-d');
 						?>
-                                    <option value="<?=$dateymd?>"<?php if($editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], $dateymd) === true) { echo 'selected'; $datefound = TRUE; } else { set_select('movie_showings[$i][date]', $dateymd); } ?>><?=$date->format('D j M Y')?></option>
+                                    <option value="<?=$dateymd?>"<?php if($editing && isset($showing[$i]) && date_match($showing[$i]['showing_datetime'], $dateymd) === true) { echo 'selected'; $datefound = TRUE; } else { set_select('movie_showings[$i][date]', $dateymd); } ?>><?=strftime('%a %e %b %Y', strtotime($dateymd) )?></option>
 						<?php endforeach; ?>
                                     <?php
                                         if($datefound === FALSE && isset($showing[$i]))
                                         {
                                     ?>
-                                    <option selected value="<?= date('Y-m-d', $showing[$i]['showing_datetime'])?>"><?=date('D j M Y', $showing[$i]['showing_datetime'])?></option>
+                                    <option selected value="<?= date('Y-m-d', $showing[$i]['showing_datetime'])?>"><?=strftime('%A %e %b %Y', $showing[$i]['showing_datetime'])?></option>
                                     <?php        
                                         }
                                     ?>

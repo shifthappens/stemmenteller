@@ -38,6 +38,7 @@ class Admin extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->mylocale = setlocale(LC_ALL, 'nl_NL');
 		$this->load->driver('session');
 		$this->load->model('Settings_model');
 		$this->Settings_model->load_settings();
@@ -51,7 +52,7 @@ class Admin extends CI_Controller {
 		if($this->session->userdata('loggedin'))
 			redirect('admin/dashboard', 'location');
 
-		$this->load->view('admin/index');
+		$this->load->view('admin/index', array("locale" => $this->mylocale));
 	}
 
 	public function login()

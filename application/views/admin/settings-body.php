@@ -56,15 +56,15 @@
                         <tr>
                             <td class="setting-name">Tussenstand weergave automatisch naar "Vanaf plek 4"</td>
                             <td class="setting-value">
-                                <input type="text" size="1"
+                                <input type="text" size="2"
                                 value="<?= $repop ? $this->input->post('settings[show_ranking_auto_limit_day]') : $this->config->item('show_ranking_auto_limit_day'); ?>" name="settings[show_ranking_auto_limit_day]" />
-                                <input type="text" size="1" 
+                                <input type="text" size="2" 
                                 value="<?= $repop ? $this->input->post('settings[show_ranking_auto_limit_month]') : $this->config->item('show_ranking_auto_limit_month')?>" name="settings[show_ranking_auto_limit_month]" />
                                 <input type="text" size="4" 
                                 value="<?= $repop ? $this->input->post('settings[show_ranking_auto_limit_year]') : $this->config->item('show_ranking_auto_limit_year')?>" name="settings[show_ranking_auto_limit_year]" />
-                                <input type="text" size="1" 
+                                <input type="text" size="2" 
                                 value="<?= $repop ? $this->input->post('settings[show_ranking_auto_limit_hour]') : $this->config->item('show_ranking_auto_limit_hour')?>" name="settings[show_ranking_auto_limit_hour]" /> :
-                                <input type="text" size="1" 
+                                <input type="text" size="2" 
                                 value="<?= $repop ? $this->input->post('settings[show_ranking_auto_limit_minutes]') : $this->config->item('show_ranking_auto_limit_minutes')?>" name="settings[show_ranking_auto_limit_minutes]" />
                            </td>
                         </tr>

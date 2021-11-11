@@ -1,5 +1,6 @@
 Film Titel;Cijfer;Aantal stemmen<?= $this->uri->segment(4) == 'publieksprijs' ? ';Niet genoeg stemmen' : ''?>
 <?php
+print "\r\n";
 foreach($movies->result() as $movie):
 	$gradeinfo = $this->Votings_model->calculate_grade($movie->movie_id);
 	print '"'.$movie->movie_name.'";';

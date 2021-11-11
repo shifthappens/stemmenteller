@@ -8,7 +8,7 @@
 
 
           <h1 class="page-header">Film data exporteren <small><?=$movies->num_rows()?> films in totaal</small></h1>
-          <a class="btn btn-lg btn-danger" href="admin/export/csv">Publieksprijs exporteren als CSV</a>
+          <a class="btn btn-lg btn-danger" href="admin/export/csv/publieksprijs">Publieksprijs exporteren als CSV</a>
           <h2>Publieksprijs</h2>
             <table id="movies" class="table table-striped sortr">
                 <thead>
@@ -31,7 +31,7 @@ foreach($movies->result() as $movie): ?>
 <?php endforeach; ?>
                 </tbody>
             </table>
-           <a class="btn btn-lg btn-danger" href="admin/export/csv">Barometer exporteren als CSV</a>
+           <a class="btn btn-lg btn-danger" href="admin/export/csv/barometer">Barometer exporteren als CSV</a>
          <h2>Barometer</h2>
             <table id="movies" class="table table-striped sortr">
                 <thead>
