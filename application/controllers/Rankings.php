@@ -63,10 +63,10 @@ class Rankings extends CI_Controller {
 		$this->load->view('main/index', array('barometer' => $barometer));		
 	}
 
-	public function makepwd()
-	{
-		echo password_hash('nff35 leeuwarden admin', PASSWORD_BCRYPT);
-	}
+	// public function makepwd()
+	// {
+	// 	echo password_hash('nff35 leeuwarden admin', PASSWORD_BCRYPT);
+	// }
 
 	public function xml()
 	{
@@ -107,6 +107,13 @@ class Rankings extends CI_Controller {
 		else
 			$offset = 0;
 
-		return array_slice($grades, $offset, 5, TRUE);
+		if($this->config->item('show_ranking_status') == 'top5')
+			$limit = 5;
+		elseif($this->config->item('show_ranking_status') == 'top10')
+			$limit = 10;
+		elseif($this->config->item('show_ranking_status') == 'from4')
+			$limit = 7;
+
+		return array_slice($grades, $offset, $limit, TRUE); //truncate the array of movies to the offset and maximum defined in settings 
 	}
 }

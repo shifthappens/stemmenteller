@@ -4,7 +4,7 @@
    Browse Happy prompt
    ========================================================================== */
 
-   .browsehappy {
+.browsehappy {
     margin: 0.2em 0;
     background: #ccc;
     color: #000;
@@ -40,14 +40,14 @@
   font-style: normal;
 }
 
-body.rankings h1, body.rankings h3 {font-size: 64px;color: #000;font-family: 'dtl_nobelt_bold', "Helvetica Neue", Helvetica, Arial;text-transform: uppercase;margin-bottom: 0.5em;}
+body.rankings h1, body.rankings h3 { font-size: 64px; color: #000; font-family: 'dtl_nobelt_bold', "Helvetica Neue", Helvetica, Arial; text-transform: uppercase; margin-bottom: 1em; }
 body.rankings h3 { font-size: 24px; color: #333 }
-body.rankings li {
-  font-size: 47px;
-  color: #000;
-  font-weight: 800;
+body.rankings li { 
+  font-size: 47px; 
+  color: #000; 
+  font-weight: 800; 
   font-family: 'ITCFranklinGothicStd-MdCd', "Helvetica Neue", Helvetica, Arial;
-  line-height: 1.72;
+  line-height: 2;
 }
 
 body.rankings ol {
@@ -119,8 +119,6 @@ header {
 
 table a.btn { margin-right: 10px; }
 
-.radio-choice { display: block; }
-
 /* Votes */
 
 select.movie-name, select.showing-id {
@@ -148,7 +146,7 @@ input.clock-digits { font-size: smaller; width: 50px; }
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-  padding-top: 25px;
+  padding-top: 50px;
 }
 
 

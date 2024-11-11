@@ -47,6 +47,12 @@
                                     name="settings[show_ranking_status]" 
                                     value="top5" /> Top 5</span>
                                 <span class="radio-choice">
+                                    <input 
+                                    type="radio" 
+                                    <?php if($this->input->post('settings[show_ranking_status]') == 'top10') echo 'checked'; elseif(!$repop && $this->config->item('show_ranking_status') == 'top10') echo 'checked'; else echo ''; ?>
+                                    name="settings[show_ranking_status]" 
+                                    value="top10" /> Top 10</span>
+                                <span class="radio-choice">
                                     <input type="radio" 
                                     <?php if($this->input->post('settings[show_ranking_status]') == 'from4') echo 'checked'; elseif(!$repop && $this->config->item('show_ranking_status') == 'from4') echo 'checked'; else echo ''; ?>
                                     name="settings[show_ranking_status]" 
