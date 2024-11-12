@@ -59,7 +59,7 @@ body.rankings ol.from4 {
 }
 
 body.rankings li strong { font-size: 48px; font-weight: 800; }
-body.rankings .container { height: 100%; }
+body.rankings .container { height: 100%; position: absolute; left: 100px; }
 
 /* IE8 margin stuff */
 .lt-ie9 h1, .lt-ie9 h3 { margin-left: 126px; }
