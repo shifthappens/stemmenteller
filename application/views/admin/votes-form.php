@@ -69,27 +69,27 @@ $this->load->view('admin/loginbar');
                             <td class="vote-grade-values">
                                 <div class="form-inline">
                                     <div class="form-group">
-                                        <input class="big-digits" type="text" name="vote_grade_value[5]" value="<?=set_value('vote_grade_value[5]', '0')?>" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[5]" value="<?=set_value('vote_grade_value[5]', '')?>" placeholder="0" />
                                         <br />
                                         <label class="big-digits">5</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="big-digits" type="text" name="vote_grade_value[4]" value="<?=set_value('vote_grade_value[4]', '0')?>" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[4]" value="<?=set_value('vote_grade_value[4]', '')?>" placeholder="0" />
                                         <br />
                                         <label class="big-digits">4</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="big-digits" type="text" name="vote_grade_value[3]" value="<?=set_value('vote_grade_value[3]', '0')?>" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[3]" value="<?=set_value('vote_grade_value[3]', '')?>" placeholder="0" />
                                         <br />
                                         <label class="big-digits">3</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="big-digits" type="text" name="vote_grade_value[2]" value="<?=set_value('vote_grade_value[2]', '0')?>" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[2]" value="<?=set_value('vote_grade_value[2]', '')?>" placeholder="0" />
                                         <br />
                                         <label class="big-digits">2</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="big-digits" type="text" name="vote_grade_value[1]" value="<?=set_value('vote_grade_value[1]', '0')?>" />
+                                        <input class="big-digits" type="text" name="vote_grade_value[1]" value="<?=set_value('vote_grade_value[1]', '')?>" placeholder="0" />
                                         <br />
                                         <label class="big-digits">1</label>
                                     </div>
@@ -97,10 +97,10 @@ $this->load->view('admin/loginbar');
                             </td>
                         </tr>
                         <tr>
-                            <td><input name="num_visitors" type="text" class="big-digits" value="<?=set_value('num_visitors', '0')?>" /> <label>Bezoekers</label></td>
+                            <td><input name="num_visitors" type="text" class="big-digits" value="<?=set_value('num_visitors', '')?>" placeholder="0" /> <label>Bezoekers</label></td>
                         </tr>
                         <tr>
-                            <td><input name="num_volunteers" type="text" class="big-digits" value="<?=set_value('num_volunteers', '0')?>" /> <label>Vrijwilligers</label></td>
+                            <td><input name="num_volunteers" type="text" class="big-digits" value="<?=set_value('num_volunteers', '')?>" placeholder="0" /> <label>Vrijwilligers</label></td>
                         </tr>
                             <td id="savechanges"><button class="btn btn-danger" type="submit" name="submit">Stemuitslag opslaan</button>
                         </tr>

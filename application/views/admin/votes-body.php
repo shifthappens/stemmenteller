@@ -23,7 +23,9 @@
                     <th class="sortr-sortable">Vrijw.</th>
                     <th class="sortr-nonsortable">Acties</th>
                 <tbody>
-                    <?php foreach($votings->result() as $voting): $voting->grades = unserialize($voting->grades); ?>
+                    <?php foreach($votings->result() as $voting):
+                      $voting->grades = unserialize($voting->grades);
+                      $voting->grades = array_map('intval', $voting->grades); ?>
                     <tr>
                         <td class="movie-name"><?=$voting->movie_name?></td>
                         <td class="showing-datetime" data-sortr-sortby="<?=$voting->showing_datetime?>"><?=strftime('%a %e %b %H:%M', $voting->showing_datetime)?></td>

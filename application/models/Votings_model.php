@@ -55,15 +55,15 @@ class Votings_model extends CI_Model {
 
     public function insert($newvoting)
     {   
-        $grades_serialized = serialize($newvoting['vote_grade_value']);
+        $grades_serialized = serialize(array_map('intval', $newvoting['vote_grade_value'])); //convert empty strings to int 0 before serializing
 
         $this->db->insert('votings', array(
             'voting_datetime' => time(),
             'movie_id' => $newvoting['movie_id'], 
             'showing_id' => $newvoting['showing_id'], 
             'grades' => $grades_serialized,
-            'num_visitors' => $newvoting['num_visitors'],
-            'num_volunteers' => $newvoting['num_volunteers']
+            'num_visitors' => intval($newvoting['num_visitors']),
+            'num_volunteers' => intval($newvoting['num_volunteers'])
         ));
         $insert_id = $this->db->insert_id();
 
@@ -84,11 +84,11 @@ class Votings_model extends CI_Model {
         foreach($grades->result() as $grade)
         {
             $gradearray = unserialize($grade->grades);
-            $totals[1] += $gradearray[1];
-            $totals[2] += $gradearray[2];
-            $totals[3] += $gradearray[3];
-            $totals[4] += $gradearray[4];
-            $totals[5] += $gradearray[5];
+            $totals[1] += (int)$gradearray[1];
+            $totals[2] += (int)$gradearray[2];
+            $totals[3] += (int)$gradearray[3];
+            $totals[4] += (int)$gradearray[4];
+            $totals[5] += (int)$gradearray[5];
         }
 
         $totalvotes = $totals[1] + $totals[2] + $totals[3] + $totals[4] + $totals[5];
